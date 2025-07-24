@@ -1,10 +1,28 @@
+import { useMemo } from "react";
 import { EditorContent, useEditor } from "@tiptap/react";
-import StarterKit from "@tiptap/starter-kit";
 
-function NoqtaEditor() {
+import type { NoqtaEditorProps } from "../types/components";
+
+import createDefaultExtensions from "../extensions/default";
+
+/**
+ * NoqtaEditor is a React component that provides a rich text editor using [Tiptap](https://tiptap.dev/).
+ */
+function NoqtaEditor(props: NoqtaEditorProps) {
+	// Use the default extensions based on the provided configuration
+	const defaultExtensions = useMemo(
+		() => createDefaultExtensions(props.defaultExtensionsConfig),
+		[props.defaultExtensionsConfig]
+	);
+
+	// Combine default extensions with any additional extensions provided via props
+	const extensions = useMemo(() => {
+		return props.extensions ? [...defaultExtensions, ...props.extensions] : defaultExtensions;
+	}, [defaultExtensions, props.extensions]);
+
 	const editor = useEditor({
-		extensions: [StarterKit],
-		content: "<p>Hello World!</p>",
+		extensions: extensions,
+		content: props.initialContent || "Start typing...",
 	});
 
 	return <EditorContent editor={editor} />;
