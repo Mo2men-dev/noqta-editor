@@ -9,4 +9,11 @@ describe("NoqtaEditor", () => {
 		expect(editor).toHaveAttribute("contenteditable", "true");
 		expect(editor).toHaveClass("ProseMirror");
 	});
+
+	it("renders with initial content", () => {
+		const initialContent = "<p>Initial content</p>";
+		render(<NoqtaEditor initialContent={initialContent} />);
+		const editor = screen.getByRole("textbox");
+		expect(editor).toHaveTextContent("Initial content");
+	});
 });
