@@ -1,9 +1,16 @@
+import { Extension } from "@tiptap/core";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 
-function NoqtaEditor({ initialContent }: { initialContent?: string }) {
+function NoqtaEditor({
+	initialContent,
+	extensions,
+}: {
+	initialContent?: string;
+	extensions?: Extension[];
+}) {
 	const editor = useEditor({
-		extensions: [StarterKit],
+		extensions: [StarterKit, ...(extensions || [])],
 		content: initialContent || "<p>Hello World!</p>",
 	});
 
