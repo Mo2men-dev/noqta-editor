@@ -1,3 +1,4 @@
+import { Extension } from "@tiptap/core";
 import { NoqtaEditor } from "../../../src";
 import { render, screen } from "@testing-library/react";
 
@@ -15,5 +16,29 @@ describe("NoqtaEditor", () => {
 		render(<NoqtaEditor initialContent={initialContent} />);
 		const editor = screen.getByRole("textbox");
 		expect(editor).toHaveTextContent("Initial content");
+	});
+
+	it("applies custom extensions", () => {
+		const customExtension = Extension.create({
+			name: "customExtension",
+			addGlobalAttributes() {
+				return [
+					{
+						types: ["paragraph"],
+						attributes: {
+							style: {
+								default: "color: red;",
+							},
+						},
+					},
+				];
+			},
+		});
+
+		render(<NoqtaEditor initialContent="<p>Hello World!!</p>" extensions={[customExtension]} />);
+		const paragraph = screen.getByText("Hello World!!");
+		expect(paragraph).toBeInTheDocument();
+		expect(paragraph.tagName).toBe("P");
+		expect(paragraph).toHaveAttribute("style", "color: red;");
 	});
 });
