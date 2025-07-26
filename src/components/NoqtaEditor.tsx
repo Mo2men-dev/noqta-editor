@@ -32,6 +32,7 @@ function NoqtaEditor(props: NoqtaEditorProps) {
 	const editor = useEditor({
 		extensions: extensions,
 		content: props.initialContent || "Start typing...",
+		editable: props.editable !== undefined ? props.editable : true,
 		editorProps: {
 			attributes: {
 				style: props.style
