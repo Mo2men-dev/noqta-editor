@@ -36,6 +36,7 @@ function NoqtaEditor(props: NoqtaEditorProps) {
 				style: props.style
 					? styleObjectToString({ ...theme.editor.base, ...props.style })
 					: styleObjectToString(theme.editor.base),
+				role: "textbox",
 			},
 		},
 	});
