@@ -5,6 +5,9 @@ import type { NoqtaEditorProps } from "../types/components";
 
 import createDefaultExtensions from "../extensions/default";
 
+import "../styles/index.css";
+import "../styles/markdown.css";
+
 /**
  * NoqtaEditor is a React component that provides a rich text editor using [Tiptap](https://tiptap.dev/).
  */
@@ -25,7 +28,7 @@ function NoqtaEditor(props: NoqtaEditorProps) {
 		content: props.initialContent || "Start typing...",
 	});
 
-	return <EditorContent editor={editor} />;
+	return <EditorContent editor={editor} id="editor-container" />;
 }
 
 export { NoqtaEditor };

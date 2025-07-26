@@ -1,0 +1,197 @@
+#editor-container {
+	height: 100%;
+	padding: 20px;
+}
+
+#editor-container h1,
+#editor-container h2,
+#editor-container h3,
+#editor-container h4,
+#editor-container h5,
+#editor-container h6 {
+	font-weight: 600;
+	line-height: 1.25;
+}
+
+#editor-container h1 {
+	font-size: 2em;
+}
+
+#editor-container h2 {
+	font-size: 1.75em;
+}
+
+#editor-container h3 {
+	font-size: 1.5em;
+}
+
+#editor-container h4 {
+	font-size: 1.25em;
+}
+
+#editor-container h5 {
+	font-size: 1.1em;
+}
+
+#editor-container h6 {
+	font-size: 1em;
+}
+
+#editor-container h1::before,
+#editor-container h2::before,
+#editor-container h3::before,
+#editor-container h4::before,
+#editor-container h5::before,
+#editor-container h6::before {
+	opacity: 0.5;
+}
+
+#editor-container h1::before {
+	content: "# ";
+}
+#editor-container h2::before {
+	content: "## ";
+}
+#editor-container h3::before {
+	content: "### ";
+}
+#editor-container h4::before {
+	content: "#### ";
+}
+#editor-container h5::before {
+	content: "##### ";
+}
+#editor-container h6::before {
+	content: "###### ";
+}
+
+/* #editor-container p {
+    margin: 1em 0;
+} */
+
+/* Blockquotes */
+#editor-container blockquote {
+	border-left: 4px solid #ccc;
+	color: #666;
+	padding-left: 1em;
+	margin: 1em 0;
+}
+
+/* Lists */
+ul[data-type="taskList"] > li {
+	list-style-type: none;
+	display: flex;
+}
+
+ul[data-type="taskList"] > li > div {
+	margin: 0 0.5em;
+}
+
+ul[data-type="taskList"] > li > label {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#editor-container ul:not([data-type="taskList"]),
+#editor-container ol {
+	margin: 1em 0;
+	padding-left: 2em;
+}
+
+#editor-container ul {
+	list-style-type: disc;
+}
+
+#editor-container ol {
+	list-style-type: decimal;
+}
+
+#editor-container li + li {
+	margin-top: 0.25em;
+}
+
+/* Code */
+#editor-container code {
+	background-color: #24292e;
+	color: #f0f0f0;
+	padding: 0.2em 0.4em;
+	border-radius: 4px;
+	font-family: Consolas, Monaco, monospace;
+	font-size: 0.95em;
+}
+
+#editor-container pre {
+	background-color: #24292e;
+	border-radius: 6px;
+	padding: 16px;
+	overflow-x: auto;
+	font-size: 0.95em;
+	line-height: 1.45;
+}
+
+/* Links */
+#editor-container a {
+	color: #0366d6;
+	text-decoration: none;
+	caret-color: #f0f0f0;
+}
+#editor-container a:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+/* Horizontal Rule */
+#editor-container hr {
+	margin: 1.5em 0;
+}
+
+/* Marks */
+mark {
+	border-radius: 0.4rem;
+	box-decoration-break: clone;
+	padding: 0.1rem 0.3rem;
+}
+
+/* Marks Symbols Wrappers */
+em[data-symbol="_"]::before,
+em[data-symbol="_"]::after,
+i[data-symbol="_"]::before,
+i[data-symbol="_"]::after {
+	content: "_";
+	opacity: 0.5;
+}
+
+em[data-symbol="*"]::before,
+em[data-symbol="*"]::after,
+i[data-symbol="*"]::before,
+i[data-symbol="*"]::after {
+	content: "*";
+	opacity: 0.5;
+}
+
+strong[data-symbol="__"]::before,
+strong[data-symbol="__"]::after,
+b[data-symbol="__"]::before,
+b[data-symbol="__"]::after {
+	content: "__";
+	opacity: 0.5;
+}
+
+strong[data-symbol="**"]::before,
+strong[data-symbol="**"]::after,
+b[data-symbol="**"]::before,
+b[data-symbol="**"]::after {
+	content: "**";
+	opacity: 0.5;
+}
+
+strike[data-symbol="~~"]::before,
+strike[data-symbol="~~"]::after,
+s[data-symbol="~~"]::before,
+s[data-symbol="~~"]::after,
+del[data-symbol="~~"]::before,
+del[data-symbol="~~"]::after {
+	content: "~~";
+	opacity: 0.5;
+}
