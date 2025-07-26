@@ -6,6 +6,7 @@ import { ThemeProvider } from "../context/ThemeContext";
 import { styleObjectToString } from "../utils/styling";
 import type { NoqtaEditorProps } from "../types/components";
 
+import BubbleMenuComponent from "./BubbleMenuComponent";
 import createDefaultExtensions from "../extensions/default";
 
 import "../styles/index.css";
@@ -43,6 +44,7 @@ function NoqtaEditor(props: NoqtaEditorProps) {
 
 	return (
 		<ThemeProvider theme={theme}>
+			{editor && <BubbleMenuComponent editor={editor} />}
 			{editor && <EditorContent editor={editor} id="editor-container" />}
 		</ThemeProvider>
 	);
