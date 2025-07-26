@@ -5,10 +5,10 @@
 	-webkit-overflow-scrolling: touch;
 	scrollbar-width: thin;
 	scrollbar-color: #444 transparent;
-	height: "100%";
 	padding: 1.25rem;
 	border-radius: 0.5rem;
 	outline: none;
+	height: 100%;
 }
 
 .ProseMirror > * {
@@ -18,14 +18,27 @@
 	outline: none;
 }
 
+#editor-container * {
+	box-sizing: border-box;
+	outline: none;
+}
+
+#editor-container {
+	height: 100%;
+	padding: 20px;
+}
+
 #editor-container input[type="color"] {
 	appearance: none;
 	-webkit-appearance: none;
 	border: none;
+	padding: 0;
 }
+
 #editor-container input[type="color"]::-webkit-color-swatch-wrapper {
 	padding: 0;
 }
+
 #editor-container input[type="color"]::-webkit-color-swatch {
 	border: none;
 }
