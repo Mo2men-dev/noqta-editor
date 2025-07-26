@@ -8,4 +8,18 @@ export interface NoqtaEditorProps {
 	defaultExtensionsConfig?: DefaultExtensions;
 	theme?: Theme;
 	style?: React.CSSProperties;
+	editable?: boolean;
 }
+
+export type ButtonProps = {
+	title: string;
+	icon: string | React.ReactNode;
+	onClick: () => void;
+	style?: React.CSSProperties;
+};
+
+export type ColorInputProps = {
+	title?: string;
+	value?: string;
+	onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+};

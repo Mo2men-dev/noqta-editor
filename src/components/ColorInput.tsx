@@ -1,18 +1,12 @@
+import type { ColorInputProps } from "../types/components";
+
 /**
  * ColorInput component for selecting colors in a color picker format.
  */
-function ColorInput({
-	title,
-	value,
-	onChange,
-}: {
-	title?: string;
-	value?: string;
-	onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}) {
+function ColorInput(props: ColorInputProps) {
 	return (
 		<input
-			title={title}
+			title={props.title}
 			type="color"
 			style={{
 				border: "none",
@@ -25,8 +19,8 @@ function ColorInput({
 				cursor: "pointer",
 				aspectRatio: "1 / 1",
 			}}
-			value={value}
-			onChange={(e) => onChange?.(e)}
+			value={props.value}
+			onChange={(e) => props.onChange?.(e)}
 		/>
 	);
 }

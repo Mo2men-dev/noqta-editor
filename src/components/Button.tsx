@@ -1,22 +1,13 @@
 import React from "react";
 import { useTheme } from "../context/ThemeContext";
+import type { ButtonProps } from "../types/components";
 
-function Button({
-	title,
-	icon,
-	onClick,
-	style = {},
-}: {
-	title: string;
-	icon: string | React.ReactNode;
-	onClick: () => void;
-	style?: React.CSSProperties;
-}) {
+function Button(props: ButtonProps) {
 	const [hovered, setHovered] = React.useState(false);
 	const theme = useTheme()!;
 	return (
 		<button
-			onClick={onClick}
+			onClick={props.onClick}
 			onMouseDown={(e) => e.preventDefault()} // Prevent focus change on button click
 			style={{
 				display: "flex",
@@ -28,13 +19,13 @@ function Button({
 				borderWidth: "1px",
 				borderStyle: "solid",
 				...theme.buttons.base,
-				...style,
+				...props.style,
 				...(hovered ? theme.buttons.hover : {}),
 			}}
-			title={title}
+			title={props.title}
 			onMouseEnter={() => setHovered(true)}
 			onMouseLeave={() => setHovered(false)}>
-			{icon}
+			{props.icon}
 		</button>
 	);
 }
