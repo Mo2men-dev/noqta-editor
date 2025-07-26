@@ -31,7 +31,7 @@ function BubbleMenuComponent({ editor }: { editor: Editor }) {
 				boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
 				borderWidth: "2px",
 				borderStyle: "solid",
-				...theme.bubbleMenu.base,
+				...theme?.bubbleMenu.base,
 			}}
 			shouldShow={({ editor, from, to }: { editor: Editor; from: number; to: number }) => {
 				return (

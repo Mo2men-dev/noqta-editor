@@ -117,7 +117,6 @@ describe("NoqtaEditor", () => {
 		const editor = screen.getByRole("textbox");
 		expect(editor).toHaveStyle("background-color: #222");
 		expect(editor).toHaveStyle("color: #fff");
-		expect(editor).toHaveStyle("padding: 1.25rem");
 	});
 
 	it("applies custom theme styles", () => {

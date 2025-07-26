@@ -18,9 +18,9 @@ function Button(props: ButtonProps) {
 				transition: "all 0.2s ease",
 				borderWidth: "1px",
 				borderStyle: "solid",
-				...theme.buttons.base,
+				...theme?.buttons.base,
 				...props.style,
-				...(hovered ? theme.buttons.hover : {}),
+				...(hovered ? theme?.buttons.hover : {}),
 			}}
 			title={props.title}
 			onMouseEnter={() => setHovered(true)}
