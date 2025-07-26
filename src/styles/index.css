@@ -1,4 +1,4 @@
-.tiptap {
+.ProseMirror {
 	white-space: pre-wrap;
 	overflow-y: scroll;
 	overflow-x: hidden;
@@ -7,7 +7,7 @@
 	scrollbar-color: #444 transparent;
 }
 
-#editor-container > * {
+.ProseMirror > * {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
