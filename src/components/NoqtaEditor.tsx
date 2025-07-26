@@ -6,6 +6,7 @@ import { ThemeProvider } from "../context/ThemeContext";
 import { styleObjectToString } from "../utils/styling";
 import type { NoqtaEditorProps } from "../types/components";
 
+import BubbleMenuComponent from "./BubbleMenuComponent";
 import createDefaultExtensions from "../extensions/default";
 
 import "../styles/index.css";
@@ -31,11 +32,12 @@ function NoqtaEditor(props: NoqtaEditorProps) {
 	const editor = useEditor({
 		extensions: extensions,
 		content: props.initialContent || "Start typing...",
+		editable: props.editable !== undefined ? props.editable : true,
 		editorProps: {
 			attributes: {
 				style: props.style
-					? styleObjectToString({ ...theme.editor.base, ...props.style })
-					: styleObjectToString(theme.editor.base),
+					? styleObjectToString({ ...theme?.editor.base, ...props.style })
+					: styleObjectToString(theme?.editor.base),
 				role: "textbox",
 			},
 		},
@@ -43,6 +45,7 @@ function NoqtaEditor(props: NoqtaEditorProps) {
 
 	return (
 		<ThemeProvider theme={theme}>
+			{editor && <BubbleMenuComponent editor={editor} />}
 			{editor && <EditorContent editor={editor} id="editor-container" />}
 		</ThemeProvider>
 	);
