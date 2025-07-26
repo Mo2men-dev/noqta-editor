@@ -1,0 +1,27 @@
+.tiptap {
+	white-space: pre-wrap;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	-webkit-overflow-scrolling: touch;
+	scrollbar-width: thin;
+	scrollbar-color: #444 transparent;
+}
+
+#editor-container > * {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	outline: none;
+}
+
+#editor-container input[type="color"] {
+	appearance: none;
+	-webkit-appearance: none;
+	border: none;
+}
+#editor-container input[type="color"]::-webkit-color-swatch-wrapper {
+	padding: 0;
+}
+#editor-container input[type="color"]::-webkit-color-swatch {
+	border: none;
+}
