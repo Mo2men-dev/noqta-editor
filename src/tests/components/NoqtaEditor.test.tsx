@@ -1,6 +1,7 @@
 import { Extension } from "@tiptap/core";
 import { NoqtaEditor } from "../../../src";
 import { render, screen } from "@testing-library/react";
+import type { Theme } from "../../types/themes";
 
 describe("NoqtaEditor", () => {
 	it("renders without crashing", () => {
@@ -109,5 +110,44 @@ describe("NoqtaEditor", () => {
 
 		const codeText = screen.getByRole("code");
 		expect(codeText).toHaveTextContent("code");
+	});
+
+	it("renders dark theme as default", () => {
+		render(<NoqtaEditor />);
+		const editor = screen.getByRole("textbox");
+		expect(editor).toHaveStyle("background-color: #222");
+		expect(editor).toHaveStyle("color: #fff");
+	});
+
+	it("applies custom theme styles", () => {
+		const customTheme: Theme = {
+			editor: {
+				base: {
+					backgroundColor: "#ff0000",
+					color: "#00ff00",
+					padding: "10px",
+				},
+			},
+			bubbleMenu: {
+				base: {},
+			},
+			buttons: {
+				base: {},
+			},
+		};
+
+		render(<NoqtaEditor theme={customTheme} />);
+		const editor = screen.getByRole("textbox");
+		expect(editor).toHaveStyle("background-color: #ff0000");
+		expect(editor).toHaveStyle("color: #00ff00");
+		expect(editor).toHaveStyle("padding: 10px");
+	});
+
+	it("applies custom styles", () => {
+		const customStyle = { backgroundColor: "#ff0000", padding: "10px" };
+		render(<NoqtaEditor style={customStyle} />);
+		const editor = screen.getByRole("textbox");
+		expect(editor).toHaveStyle("background-color: #ff0000");
+		expect(editor).toHaveStyle("padding: 10px");
 	});
 });
