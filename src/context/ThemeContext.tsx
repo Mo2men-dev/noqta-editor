@@ -1,8 +1,9 @@
 import React, { createContext, useContext, type ReactNode } from "react";
+import type { Theme } from "../types/themes";
 
-const ThemeContext = createContext<any>(null);
+const ThemeContext = createContext<Theme | null>(null);
 
-export const ThemeProvider: React.FC<{ theme: any; children: ReactNode }> = ({
+export const ThemeProvider: React.FC<{ theme: Theme; children: ReactNode }> = ({
 	children,
 	theme,
 }) => {
