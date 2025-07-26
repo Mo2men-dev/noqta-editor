@@ -4,11 +4,7 @@ import { type Theme } from "../types/themes";
 export const darkTheme: Theme = {
 	editor: {
 		base: {
-			height: "100%",
 			backgroundColor: styleTokens.dark.colors.background,
-			padding: "1.25rem",
-			borderRadius: "0.5rem",
-			outline: "none",
 			color: styleTokens.dark.colors.text,
 		},
 	},
