@@ -14,6 +14,12 @@ const styleTokens: StyleTokens = {
 			border: "#333",
 			hover: "#1a1a1a",
 		},
+		table: {
+			border: "#fff",
+			text: "#fff",
+			cellBackground: "#333",
+			headerBackground: "#1a1a1a",
+		},
 	},
 };
 

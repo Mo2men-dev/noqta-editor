@@ -10,10 +10,21 @@ interface ThemeComponent {
 	disabled?: ThemeSection;
 }
 
+type TablesThemeComponent = {
+	td: ThemeSection;
+	th: ThemeSection;
+	tr?: ThemeSection;
+	thead?: ThemeSection;
+	tbody?: ThemeSection;
+	tfoot?: ThemeSection;
+	table?: ThemeSection;
+};
+
 export interface Theme {
 	editor: ThemeComponent;
 	bubbleMenu: ThemeComponent;
 	buttons: ThemeComponent;
+	table: TablesThemeComponent;
 }
 
 export interface StyleTokens {
@@ -22,6 +33,9 @@ export interface StyleTokens {
 			[key: string]: string;
 		};
 		buttons: {
+			[key: string]: string;
+		};
+		table: {
 			[key: string]: string;
 		};
 	};
