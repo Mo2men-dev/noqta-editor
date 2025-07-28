@@ -1,6 +1,7 @@
-import type { Extension } from "@tiptap/core";
+import type { Editor, Extension } from "@tiptap/core";
 import type { DefaultExtensions } from "./extensions";
 import type { Theme } from "./themes";
+import { Node } from "@tiptap/pm/model";
 
 export interface NoqtaEditorProps {
 	initialContent?: string;
@@ -22,4 +23,10 @@ export type ColorInputProps = {
 	title?: string;
 	value?: string;
 	onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+};
+
+export type CustomTableComponentProps = {
+	editor: Editor;
+	node: Node;
+	extension: any;
 };

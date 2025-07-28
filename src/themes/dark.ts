@@ -25,4 +25,15 @@ export const darkTheme: Theme = {
 			backgroundColor: styleTokens.dark.buttons.hover,
 		},
 	},
+	table: {
+		table: {
+			color: styleTokens.dark.table.text,
+		},
+		td: {
+			backgroundColor: styleTokens.dark.table.cellBackground,
+		},
+		th: {
+			backgroundColor: styleTokens.dark.table.headerBackground,
+		},
+	},
 };

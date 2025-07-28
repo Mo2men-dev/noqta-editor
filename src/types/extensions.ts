@@ -17,6 +17,7 @@ import type { HighlightOptions } from "@tiptap/extension-highlight";
 import type { ColorOptions } from "@tiptap/extension-text-style";
 import type { UnderlineOptions } from "@tiptap/extension-underline";
 import type { ImageOptions } from "@tiptap/extension-image";
+import type { TableOptions } from "@tiptap/extension-table";
 
 export interface DefaultExtensions {
 	blockquote?: Partial<BlockquoteOptions> | false;
@@ -39,4 +40,6 @@ export interface DefaultExtensions {
 	link?: Partial<LinkOptions> | false;
 	taskList?: Partial<TaskListOptions> | false;
 	image?: Partial<ImageOptions> | false;
+	table?: Partial<TableOptions> | false;
+	codeBlockLowlight?: boolean;
 }
