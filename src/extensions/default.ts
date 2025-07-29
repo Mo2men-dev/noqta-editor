@@ -31,8 +31,10 @@ import { TrailingNode } from "@tiptap/extensions";
 import Link from "@tiptap/extension-link";
 import Image from "@tiptap/extension-image";
 import Highlight from "@tiptap/extension-highlight";
+import CustomTable from "./extended-tables";
 
 import type { DefaultExtensions } from "../types/extensions";
+import { TableCell, TableHeader, TableRow } from "@tiptap/extension-table";
 
 /**
  * Creates an array of default Tiptap extensions based on the provided configuration options.
@@ -68,6 +70,11 @@ const createDefaultExtensions = (
 			openOnClick: true,
 		},
 		taskList: {},
+		table: {
+			resizable: true,
+			cellMinWidth: 100,
+		},
+		codeBlockLowlight: true,
 	}
 ): Array<any> => {
 	const extensions = [];
@@ -131,6 +138,9 @@ const createDefaultExtensions = (
 	}
 	if (options.link !== false) {
 		extensions.push(Link.configure(options.link));
+	}
+	if (options.table !== false) {
+		extensions.push(CustomTable.configure(options.table), TableCell, TableRow, TableHeader);
 	}
 
 	extensions.push(

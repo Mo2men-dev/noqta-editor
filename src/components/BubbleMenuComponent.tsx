@@ -1,4 +1,12 @@
-import { FaBold, FaItalic, FaStrikethrough, FaLink, FaUnderline, FaCode } from "react-icons/fa6";
+import {
+	FaBold,
+	FaItalic,
+	FaStrikethrough,
+	FaLink,
+	FaUnderline,
+	FaCode,
+	FaTable,
+} from "react-icons/fa6";
 import { MdCheckBox } from "react-icons/md";
 import { PiHighlighterBold } from "react-icons/pi";
 
@@ -20,6 +28,7 @@ function BubbleMenuComponent({ editor }: { editor: Editor }) {
 	return (
 		<BubbleMenu
 			editor={editor}
+			className="bubble-menu"
 			style={{
 				display: "flex",
 				position: "absolute",
@@ -104,6 +113,13 @@ function BubbleMenuComponent({ editor }: { editor: Editor }) {
 							editor.chain().focus().setLink({ href: url, target: "_blank" }).run();
 						}
 					}}
+				/>
+				<Button
+					title="Table"
+					icon={<FaTable />}
+					onClick={() =>
+						editor.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run()
+					}
 				/>
 			</HorizontalCenter>
 			<hr

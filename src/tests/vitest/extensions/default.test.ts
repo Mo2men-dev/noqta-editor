@@ -1,5 +1,5 @@
 import { expect } from "vitest";
-import createDefaultExtensions from "../../extensions/default";
+import createDefaultExtensions from "../../../extensions/default";
 
 describe("createDefaultExtensions", () => {
 	it("should return an array of extensions", () => {
