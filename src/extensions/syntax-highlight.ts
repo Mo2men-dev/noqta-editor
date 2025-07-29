@@ -1,34 +1,16 @@
 import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
-
-import css from "highlight.js/lib/languages/css";
-import js from "highlight.js/lib/languages/javascript";
-import ts from "highlight.js/lib/languages/typescript";
-import html from "highlight.js/lib/languages/xml";
-import c from "highlight.js/lib/languages/c";
-import java from "highlight.js/lib/languages/java";
-import cpp from "highlight.js/lib/languages/cpp";
-import kotlin from "highlight.js/lib/languages/kotlin";
-import python from "highlight.js/lib/languages/python";
-import ruby from "highlight.js/lib/languages/ruby";
-import rust from "highlight.js/lib/languages/rust";
+import CodeBlockComponent from "../components/CodeBlockComponent";
 
 import { all, createLowlight } from "lowlight";
 import { ReactNodeViewRenderer } from "@tiptap/react";
-import CodeBlockComponent from "../components/CodeBlockComponent";
+import { lowlightLangs } from "../constants/lowlightLangs";
 
 const lowlight = createLowlight(all);
 
-lowlight.register("css", css);
-lowlight.register("javascript", js);
-lowlight.register("typescript", ts);
-lowlight.register("xml", html);
-lowlight.register("c", c);
-lowlight.register("java", java);
-lowlight.register("cpp", cpp);
-lowlight.register("kotlin", kotlin);
-lowlight.register("python", python);
-lowlight.register("ruby", ruby);
-lowlight.register("rust", rust);
+// Register languages with lowlight
+lowlightLangs.forEach((lang) => {
+	lowlight.register(lang[0], lang[1]);
+});
 
 lowlight.registerAlias({ javascript: ["js"], typescript: ["ts"], xml: ["html"] });
 
@@ -37,20 +19,7 @@ const SyntaxHighlight = CodeBlockLowlight.extend({
 		return {
 			lowlight,
 			defaultLanguage: "plaintext",
-			langs: [
-				"javascript",
-				"typescript",
-				"css",
-				"html",
-				"plaintext",
-				"c",
-				"java",
-				"cpp",
-				"kotlin",
-				"python",
-				"ruby",
-				"rust",
-			],
+			langs: lowlightLangs.map((lang) => lang[0]),
 		};
 	},
 	addNodeView() {
@@ -76,7 +45,6 @@ const SyntaxHighlight = CodeBlockLowlight.extend({
 	},
 }).configure({
 	lowlight,
-	defaultLanguage: "plaintext",
 });
 
 export default SyntaxHighlight;

@@ -1,5 +1,8 @@
 import { NodeViewContent, NodeViewWrapper } from "@tiptap/react";
 
+/**
+ * CodeBlockComponent is a React component that renders a code block with a language selector.
+ */
 const CodeBlockComponent = ({
 	node: {
 		attrs: { language: defaultLanguage },
