@@ -60,6 +60,7 @@
 	color: #faf594;
 }
 
+.hljs-property,
 .hljs-keyword,
 .hljs-selector-tag {
 	color: #70cff8;

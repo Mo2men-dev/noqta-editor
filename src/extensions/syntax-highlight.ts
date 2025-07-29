@@ -30,9 +30,7 @@ lowlight.register("python", python);
 lowlight.register("ruby", ruby);
 lowlight.register("rust", rust);
 
-lowlight.registerAlias("js", "javascript");
-lowlight.registerAlias("ts", "typescript");
-lowlight.registerAlias("html", "xml");
+lowlight.registerAlias({ javascript: ["js"], typescript: ["ts"], xml: ["html"] });
 
 const SyntaxHighlight = CodeBlockLowlight.extend({
 	addOptions() {
