@@ -39,7 +39,7 @@ function CustomTableComponent(props: CustomTableComponentProps) {
 				action: () => props.editor.chain().focus().addColumnAfter().run(),
 			},
 			mergeOrSplit: {
-				label: "Merge Cells",
+				label: "Merge/Split Cells",
 				icon: <LuTableCellsSplit />,
 				action: () => props.editor.chain().focus().mergeOrSplit().run(),
 			},
@@ -96,7 +96,7 @@ function CustomTableComponent(props: CustomTableComponentProps) {
 					</colgroup>
 				}
 			</NodeViewContent>
-			<HorizontalCenter>
+			<HorizontalCenter className="table-controls">
 				{Object.values(controls).map((control) => (
 					<Button
 						key={control.label}
