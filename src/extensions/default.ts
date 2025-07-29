@@ -32,6 +32,7 @@ import Link from "@tiptap/extension-link";
 import Image from "@tiptap/extension-image";
 import Highlight from "@tiptap/extension-highlight";
 import CustomTable from "./extended-tables";
+import SyntaxHighlight from "./syntax-highlight";
 
 import type { DefaultExtensions } from "../types/extensions";
 import { TableCell, TableHeader, TableRow } from "@tiptap/extension-table";
@@ -141,6 +142,9 @@ const createDefaultExtensions = (
 	}
 	if (options.table !== false) {
 		extensions.push(CustomTable.configure(options.table), TableCell, TableRow, TableHeader);
+	}
+	if (options.codeBlockLowlight) {
+		extensions.push(SyntaxHighlight);
 	}
 
 	extensions.push(
