@@ -28,6 +28,7 @@ function BubbleMenuComponent({ editor }: { editor: Editor }) {
 	return (
 		<BubbleMenu
 			editor={editor}
+			className="bubble-menu"
 			style={{
 				display: "flex",
 				position: "absolute",
