@@ -4,8 +4,8 @@ import {
 	styleObjectToString,
 	toCamelCase,
 	toKebabCase,
-} from "../../utils/styling";
-import type { StyleTokens, Theme } from "../../types/themes";
+} from "../../../utils/styling";
+import type { StyleTokens, Theme } from "../../../types/themes";
 
 describe("Style conversions", () => {
 	it("styleObjectToString: should convert a style object to a CSS string", () => {

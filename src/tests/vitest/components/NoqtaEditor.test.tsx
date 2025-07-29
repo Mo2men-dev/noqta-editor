@@ -1,7 +1,7 @@
 import { Extension } from "@tiptap/core";
-import { NoqtaEditor } from "../../../src";
+import { NoqtaEditor } from "../../..";
 import { render, screen } from "@testing-library/react";
-import type { Theme } from "../../types/themes";
+import type { Theme } from "../../../types/themes";
 
 describe("NoqtaEditor", () => {
 	it("renders without crashing", () => {
@@ -120,7 +120,7 @@ describe("NoqtaEditor", () => {
 	});
 
 	it("applies custom theme styles", () => {
-		const customTheme: Theme = {
+		const customTheme = {
 			editor: {
 				base: {
 					backgroundColor: "#ff0000",
@@ -134,7 +134,7 @@ describe("NoqtaEditor", () => {
 			buttons: {
 				base: {},
 			},
-		};
+		} as unknown as Theme;
 
 		render(<NoqtaEditor theme={customTheme} />);
 		const editor = screen.getByRole("textbox");
