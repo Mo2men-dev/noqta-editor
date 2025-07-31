@@ -42,9 +42,32 @@ export interface DefaultExtensions {
 	image?: Partial<ImageOptions> | false;
 	table?: Partial<TableOptions> | false;
 	codeBlockLowlight?: boolean;
+	smartTyping?: Partial<SmartTypingOptions> | false;
 }
 
 /**
  * The options available to customize the `RichTextLink` extension.
  */
 export type RichTextLinkOptions = LinkOptions;
+
+/**
+ * Options for the smart typing extension.
+ * These options control features like smart selection wrapping and automatic symbol closing.
+ */
+export type SmartTypingOptions = {
+	smartSelectWrap?: boolean;
+	smartSymbolClose?: boolean;
+	showSymbols?: boolean;
+};
+
+/**
+ * Represents a rule for marking text in the editor.
+ * Each rule consists of a regular expression to match text, the type of mark to apply,
+ * and the offsets to apply to the start and end of the match.
+ */
+export interface MarkingRule {
+	regex: { source: RegExp; symbol: string }[];
+	markType: string;
+	offsetStart: number;
+	offsetEnd: number;
+}
