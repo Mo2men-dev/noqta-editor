@@ -1,25 +1,51 @@
 import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
+import dts from "vite-plugin-dts";
+import { libInjectCss } from "vite-plugin-lib-inject-css";
 
 // https://vite.dev/config/
 export default defineConfig({
-	plugins: [react()],
+	plugins: [
+		react({
+			jsxImportSource: "react",
+			babel: {
+				plugins: [],
+				presets: [],
+			},
+			jsxRuntime: "automatic",
+			include: ["src/**/*"],
+			exclude: ["node_modules/**/*"],
+		}),
+		libInjectCss(),
+		dts({
+			insertTypesEntry: true,
+			tsconfigPath: "./tsconfig.app.json",
+			include: ["src/**/*.{ts,tsx}"],
+			exclude: ["src/tests/**/*", "node_modules/**/*"],
+		}),
+	],
 	build: {
 		lib: {
-			entry: "src/index.ts",
+			entry: {
+				index: "./src/index.ts",
+				themes: "./src/themes.ts",
+			},
 			name: "noqta",
-			fileName: (format) => `noqta.${format}.js`,
-			formats: ["es", "umd"],
+			formats: ["es"],
 		},
 		rollupOptions: {
-			external: ["react", "react-dom"],
+			external: ["react", "react-dom", "react/jsx-runtime", "react/jsx-dev-runtime"],
 			output: {
 				globals: {
 					react: "React",
 					"react-dom": "ReactDOM",
 				},
 			},
+			jsx: "react-jsx",
 		},
+		sourcemap: false,
+		cssCodeSplit: true,
+		minify: true,
 	},
 	test: {
 		environment: "jsdom",

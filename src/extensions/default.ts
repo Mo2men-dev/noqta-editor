@@ -162,7 +162,7 @@ const createDefaultExtensions = (
 	if (options.table !== false) {
 		extensions.push(CustomTable.configure(options.table), TableCell, TableRow, TableHeader);
 	}
-	if (options.codeBlockLowlight) {
+	if (options.codeBlockLowlight !== false) {
 		extensions.push(SyntaxHighlight);
 	}
 	if (options.smartTyping !== false) {

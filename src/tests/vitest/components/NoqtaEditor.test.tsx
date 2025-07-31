@@ -1,5 +1,5 @@
 import { Extension } from "@tiptap/core";
-import { NoqtaEditor } from "../../..";
+import { NoqtaEditor } from "../../../components/NoqtaEditor";
 import { render, screen } from "@testing-library/react";
 import type { Theme } from "../../../types/themes";
 
