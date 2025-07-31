@@ -1,5 +1,8 @@
 import { test, expect } from "@playwright/test";
 
+// This test suite Requires the `smartTyping` extension to be disabled
+// in the editor configuration, to prevent the automatic insertion symbols
+// like backticks when typing.
 test.beforeEach(async ({ page }) => {
 	await page.goto("/");
 	await expect(page).toHaveTitle(/Noqta Demo/);
