@@ -10,6 +10,7 @@ import BubbleMenuComponent from "./BubbleMenuComponent";
 import createDefaultExtensions from "../extensions/default";
 
 import "../styles/index.css";
+import "../styles/syntax.css";
 import "../styles/markdown.css";
 
 /**

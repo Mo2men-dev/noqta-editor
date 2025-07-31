@@ -27,14 +27,17 @@ import { TaskList, TaskItem } from "@tiptap/extension-list";
 import { TextStyle, Color } from "@tiptap/extension-text-style";
 import { Underline } from "@tiptap/extension-underline";
 import { TrailingNode } from "@tiptap/extensions";
+import { RichTextLink } from "./rich-text-links";
+import { SmartTyping } from "./smart-typing";
+import { TableCell, TableHeader, TableRow } from "@tiptap/extension-table";
 
-import Link from "@tiptap/extension-link";
 import Image from "@tiptap/extension-image";
 import Highlight from "@tiptap/extension-highlight";
 import CustomTable from "./extended-tables";
+import SyntaxHighlight from "./syntax-highlight";
 
 import type { DefaultExtensions } from "../types/extensions";
-import { TableCell, TableHeader, TableRow } from "@tiptap/extension-table";
+import { addAttributeToMark } from "../utils/marks";
 
 /**
  * Creates an array of default Tiptap extensions based on the provided configuration options.
@@ -75,6 +78,7 @@ const createDefaultExtensions = (
 			cellMinWidth: 100,
 		},
 		codeBlockLowlight: true,
+		smartTyping: {},
 	}
 ): Array<any> => {
 	const extensions = [];
@@ -83,7 +87,11 @@ const createDefaultExtensions = (
 		extensions.push(Blockquote.configure(options.blockquote));
 	}
 	if (options.bold !== false) {
-		extensions.push(Bold.configure(options.bold));
+		extensions.push(
+			SmartTyping.options.showSymbols
+				? addAttributeToMark(Bold.configure(options.bold), [{ attr: "data-symbol", value: "**" }])
+				: Bold.configure(options.bold)
+		);
 	}
 	if (options.bulletList !== false) {
 		extensions.push(BulletList.configure(options.bulletList));
@@ -110,7 +118,13 @@ const createDefaultExtensions = (
 		extensions.push(HorizontalRule.configure(options.horizontalRule));
 	}
 	if (options.italic !== false) {
-		extensions.push(Italic.configure(options.italic));
+		extensions.push(
+			SmartTyping.options.showSymbols
+				? addAttributeToMark(Italic.configure(options.italic), [
+						{ attr: "data-symbol", value: "*" },
+				  ])
+				: Italic.configure(options.italic)
+		);
 	}
 	if (options.listItem !== false) {
 		extensions.push(ListItem.configure(options.listItem));
@@ -119,7 +133,13 @@ const createDefaultExtensions = (
 		extensions.push(OrderedList.configure(options.orderedList));
 	}
 	if (options.strike !== false) {
-		extensions.push(Strike.configure(options.strike));
+		extensions.push(
+			SmartTyping.options.showSymbols
+				? addAttributeToMark(Strike.configure(options.strike), [
+						{ attr: "data-symbol", value: "~~" },
+				  ])
+				: Strike.configure(options.strike)
+		);
 	}
 	if (options.underline !== false) {
 		extensions.push(Underline.configure(options.underline));
@@ -137,10 +157,16 @@ const createDefaultExtensions = (
 		extensions.push(Image.configure(options.image));
 	}
 	if (options.link !== false) {
-		extensions.push(Link.configure(options.link));
+		extensions.push(RichTextLink.configure(options.link));
 	}
 	if (options.table !== false) {
 		extensions.push(CustomTable.configure(options.table), TableCell, TableRow, TableHeader);
+	}
+	if (options.codeBlockLowlight) {
+		extensions.push(SyntaxHighlight);
+	}
+	if (options.smartTyping !== false) {
+		extensions.push(SmartTyping.configure(options.smartTyping));
 	}
 
 	extensions.push(
