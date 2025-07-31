@@ -1,5 +1,6 @@
 {
 	"compilerOptions": {
+		"outDir": "dist",
 		"tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
 		"target": "ES2022",
 		"useDefineForClassFields": true,
@@ -9,12 +10,14 @@
 		"types": ["vitest/globals"],
 
 		/* Bundler mode */
+		"declaration": true,
+		"declarationDir": "dist",
 		"moduleResolution": "bundler",
-		"allowImportingTsExtensions": true,
+		"emitDeclarationOnly": true,
 		"verbatimModuleSyntax": true,
 		"moduleDetection": "force",
-		"noEmit": true,
 		"jsx": "react-jsx",
+		"jsxImportSource": "react",
 
 		/* Linting */
 		"strict": true,
@@ -23,13 +26,5 @@
 		"noFallthroughCasesInSwitch": true,
 		"noUncheckedSideEffectImports": true
 	},
-	"include": [
-		"src",
-		"../temp/tests/components",
-		"../temp/tests",
-		"../temp/tests/components/components",
-		"../temp/tests/components/tests",
-		"../temp/tests/components",
-		"../temp/components"
-	]
+	"include": ["src"]
 }

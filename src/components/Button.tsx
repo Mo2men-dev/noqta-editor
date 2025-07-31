@@ -1,9 +1,9 @@
-import React from "react";
+import { useState } from "react";
 import { useTheme } from "../context/ThemeContext";
 import type { ButtonProps } from "../types/components";
 
 function Button(props: ButtonProps) {
-	const [hovered, setHovered] = React.useState(false);
+	const [hovered, setHovered] = useState(false);
 	const theme = useTheme()!;
 	return (
 		<button
