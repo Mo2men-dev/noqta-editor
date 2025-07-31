@@ -43,3 +43,8 @@ export interface DefaultExtensions {
 	table?: Partial<TableOptions> | false;
 	codeBlockLowlight?: boolean;
 }
+
+/**
+ * The options available to customize the `RichTextLink` extension.
+ */
+export type RichTextLinkOptions = LinkOptions;

@@ -27,8 +27,8 @@ import { TaskList, TaskItem } from "@tiptap/extension-list";
 import { TextStyle, Color } from "@tiptap/extension-text-style";
 import { Underline } from "@tiptap/extension-underline";
 import { TrailingNode } from "@tiptap/extensions";
+import { RichTextLink } from "./rich-text-links";
 
-import Link from "@tiptap/extension-link";
 import Image from "@tiptap/extension-image";
 import Highlight from "@tiptap/extension-highlight";
 import CustomTable from "./extended-tables";
@@ -138,7 +138,7 @@ const createDefaultExtensions = (
 		extensions.push(Image.configure(options.image));
 	}
 	if (options.link !== false) {
-		extensions.push(Link.configure(options.link));
+		extensions.push(RichTextLink.configure(options.link));
 	}
 	if (options.table !== false) {
 		extensions.push(CustomTable.configure(options.table), TableCell, TableRow, TableHeader);
