@@ -39,4 +39,4 @@ export default App;
 
 ## Documentation
 
-For detailed documentation on how to use Noqta, including configuration options, themes, and plugins, please visit the [Noqta Documentation](mo2men-dev.github.io/noqta).
+For detailed documentation on how to use Noqta, including configuration options, themes, and plugins, please visit the [Noqta Documentation](https://mo2men-dev.github.io/noqta).
