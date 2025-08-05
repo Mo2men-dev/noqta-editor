@@ -1,4 +1,4 @@
-<img src="./public/logo-large.png" alt="Noqta Logo" width="700" style="display: block; margin: auto;" />
+<img src="./public/logo.png" alt="Noqta Logo" style="display: block; margin: auto;" />
 
 # Noqta
 
@@ -36,3 +36,7 @@ function App() {
 
 export default App;
 ```
+
+## Documentation
+
+For detailed documentation on how to use Noqta, including configuration options, themes, and plugins, please visit the [Noqta Documentation](mo2men-dev.github.io/noqta).
