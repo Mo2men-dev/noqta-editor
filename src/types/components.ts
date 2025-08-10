@@ -17,6 +17,8 @@ export type ButtonProps = {
 	icon: string | React.ReactNode;
 	onClick: () => void;
 	style?: React.CSSProperties;
+	active?: boolean;
+	disabled?: boolean;
 };
 
 export type ColorInputProps = {
