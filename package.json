@@ -23,7 +23,8 @@
 	"files": [
 		"dist/**",
 		"README.md",
-		"LICENSE"
+		"LICENSE",
+		"CHANGELOG.md"
 	],
 	"scripts": {
 		"dev": "vite",
