@@ -19,6 +19,13 @@ import "../styles/markdown.css";
 function NoqtaEditor(props: NoqtaEditorProps) {
 	const theme = props.theme || darkTheme;
 
+	const defaultStyles = {
+		backgroundColor: theme.background.primary,
+		color: theme.text.primary,
+		borderColor: theme.border.primary || "transparent",
+	};
+	const style = props.style ? { ...defaultStyles, ...props.style } : defaultStyles;
+
 	// Use the default extensions based on the provided configuration
 	const defaultExtensions = useMemo(
 		() => createDefaultExtensions(props.defaultExtensionsConfig),
@@ -36,9 +43,8 @@ function NoqtaEditor(props: NoqtaEditorProps) {
 		editable: props.editable !== undefined ? props.editable : true,
 		editorProps: {
 			attributes: {
-				style: props.style
-					? styleObjectToString({ ...theme?.editor.base, ...props.style })
-					: styleObjectToString(theme?.editor.base),
+				id: "noqta-editor",
+				style: styleObjectToString(style),
 				role: "textbox",
 			},
 		},

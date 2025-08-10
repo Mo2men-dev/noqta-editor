@@ -14,7 +14,7 @@ import { BubbleMenu } from "../extended-components/BubbleMenu";
 import Button from "./Button";
 import { useTheme } from "../context/ThemeContext";
 import { Editor } from "@tiptap/core";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ColorInput from "./ColorInput";
 import HorizontalCenter from "../layout-components/HorizontalCenter";
 
@@ -23,8 +23,21 @@ import HorizontalCenter from "../layout-components/HorizontalCenter";
  */
 function BubbleMenuComponent({ editor }: { editor: Editor }) {
 	const theme = useTheme()!;
+	const [, setTick] = useState(0); // to force rerender on selection change
 	const [highlightColor, setHighlightColor] = useState("#ffff00");
 	const [textColor, setTextColor] = useState("#ffffff");
+
+	useEffect(() => {
+		if (!editor) return;
+		const onSel = () => setTick((t) => t + 1); // small state just to force rerender
+		editor.on("selectionUpdate", onSel);
+		editor.on("update", onSel);
+		return () => {
+			editor.off("selectionUpdate", onSel);
+			editor.off("update", onSel);
+		};
+	}, [editor]);
+
 	return (
 		<BubbleMenu
 			editor={editor}
@@ -37,16 +50,18 @@ function BubbleMenuComponent({ editor }: { editor: Editor }) {
 				borderRadius: "0.75rem",
 				fontSize: "0.75rem",
 				gap: "0.25rem",
-				boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
+				boxShadow: `0 2px 4px ${theme.shadow || "rgba(0, 0, 0, 0.2)"}`,
 				borderWidth: "2px",
 				borderStyle: "solid",
-				...theme?.bubbleMenu.base,
+				background: theme.background.primary,
+				borderColor: theme.border.primary || "transparent",
 			}}
 			shouldShow={({ editor, from, to }: { editor: Editor; from: number; to: number }) => {
 				return (
 					from !== to && // Only show if there is a selection
 					editor.isEditable && // Only show if the editor is editable
-					!editor.isActive("codeBlock") // Hide if in a code block
+					!editor.isActive("codeBlock") && // Hide if in a code block
+					!editor.can().chain().focus().toggleHeaderRow().run() // Hide if inside a table
 				);
 			}}
 			options={{
@@ -56,6 +71,7 @@ function BubbleMenuComponent({ editor }: { editor: Editor }) {
 				<Button
 					title="Bold"
 					icon={<FaBold />}
+					active={editor.isActive("bold")}
 					onClick={() =>
 						editor
 							.chain()
@@ -68,6 +84,7 @@ function BubbleMenuComponent({ editor }: { editor: Editor }) {
 				<Button
 					title="Italic"
 					icon={<FaItalic />}
+					active={editor.isActive("italic")}
 					onClick={() =>
 						editor
 							.chain()
@@ -80,6 +97,7 @@ function BubbleMenuComponent({ editor }: { editor: Editor }) {
 				<Button
 					title="Strikethrough"
 					icon={<FaStrikethrough />}
+					active={editor.isActive("strike")}
 					onClick={() =>
 						editor
 							.chain()
@@ -91,22 +109,26 @@ function BubbleMenuComponent({ editor }: { editor: Editor }) {
 				/>
 				<Button
 					title="Underline"
+					active={editor.isActive("underline")}
 					icon={<FaUnderline />}
 					onClick={() => editor.chain().focus().toggleUnderline().run()}
 				/>
 				<Button
 					title="Task List"
+					active={editor.isActive("taskList")}
 					icon={<MdCheckBox />}
 					onClick={() => editor.chain().focus().toggleTaskList().run()}
 				/>
 				<Button
 					title="Code"
+					active={editor.isActive("code")}
 					icon={<FaCode />}
 					onClick={() => editor.chain().focus().toggleCode().run()}
 				/>
 				<Button
 					title="Link"
 					icon={<FaLink />}
+					active={editor.isActive("link")}
 					onClick={() => {
 						const url = window.prompt("URL");
 						if (url) {
