@@ -121,26 +121,25 @@ describe("NoqtaEditor", () => {
 
 	it("applies custom theme styles", () => {
 		const customTheme = {
-			editor: {
-				base: {
-					backgroundColor: "#ff0000",
-					color: "#00ff00",
-					padding: "10px",
-				},
+			background: {
+				primary: "#ff0000",
+				hover: "#ffcccc",
 			},
-			bubbleMenu: {
-				base: {},
+			text: {
+				primary: "#00ff00",
+				hover: "#00cc00",
 			},
-			buttons: {
-				base: {},
+			border: {
+				primary: "#0000ff",
+				hover: "#ccccff",
 			},
+			shadow: "rgba(0, 0, 0, 0.5)",
 		} as unknown as Theme;
 
 		render(<NoqtaEditor theme={customTheme} />);
 		const editor = screen.getByRole("textbox");
 		expect(editor).toHaveStyle("background-color: #ff0000");
 		expect(editor).toHaveStyle("color: #00ff00");
-		expect(editor).toHaveStyle("padding: 10px");
 	});
 
 	it("applies custom styles", () => {
