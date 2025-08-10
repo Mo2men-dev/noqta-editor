@@ -1,39 +1,21 @@
-import styleTokens from "../constants/styles";
-import { type Theme } from "../types/themes";
+import type { Theme } from "../types/themes";
 
 export const darkTheme: Theme = {
-	editor: {
-		base: {
-			backgroundColor: styleTokens.dark.colors.background,
-			color: styleTokens.dark.colors.text,
-		},
+	background: {
+		primary: "#222",
+		hover: "#1a1a1a",
+		active: "#333",
+		focus: "#333",
+		disabled: "#444",
 	},
-	bubbleMenu: {
-		base: {
-			backgroundColor: styleTokens.dark.colors.background,
-			color: styleTokens.dark.colors.text,
-			borderColor: styleTokens.dark.colors.border,
-		},
+	text: {
+		primary: "#fff",
+		secondary: "#7a52ff",
 	},
-	buttons: {
-		base: {
-			backgroundColor: styleTokens.dark.buttons.background,
-			color: styleTokens.dark.buttons.text,
-			borderColor: styleTokens.dark.buttons.border,
-		},
-		hover: {
-			backgroundColor: styleTokens.dark.buttons.hover,
-		},
+	border: {
+		primary: "#333",
+		hover: "#444",
+		active: "#555",
 	},
-	table: {
-		table: {
-			color: styleTokens.dark.table.text,
-		},
-		td: {
-			backgroundColor: styleTokens.dark.table.cellBackground,
-		},
-		th: {
-			backgroundColor: styleTokens.dark.table.headerBackground,
-		},
-	},
+	shadow: "#000",
 };

@@ -1,5 +1,5 @@
 import type { Extension } from "@tiptap/react";
-import type { StyleTokens, Theme } from "../types/themes";
+import type { Theme } from "../types/themes";
 
 /**
  * Convert a style object to a string representation for inline styles in React components.
@@ -31,42 +31,36 @@ export function toCamelCase(str: string): string {
 }
 
 /**
- * Generate CSS styles for tables based on the provided theme and style tokens.
+ * Generate CSS styles for tables based on the provided theme.
  * @param extension The Tiptap extension for the table.
  * @param theme The theme object containing style definitions.
- * @param styleTokens The style tokens used for theming.
  */
-export function generateTableStyles(
-	extension: Extension,
-	theme: Theme,
-	styleTokens: StyleTokens
-): string {
+export function generateTableStyles(extension: Extension, theme: Theme): string {
 	return `
         table {
             border-collapse: collapse;
             border-radius: 0.5rem;
             margin: 0 auto;
-            overflow: hidden;
-            ${styleObjectToString(theme.table.table!)}
+            color: ${theme.text.primary};
         }
 
         th {
-            ${styleObjectToString(theme.table.th!)};
+            background-color: ${theme.background.hover};
         }
         
         td {
-            ${styleObjectToString(theme.table.td!)};
+            background-color: ${theme.background.primary};
         }
         
         /* Add border for table cells based on cell position */
         td, th {
         	padding: 0.5rem;
             position: relative;
-            border: 1px solid ${styleTokens.dark.table.border};
+            border: 1px solid ${theme.border.primary};
         }
 
         .selectedCell:after {
-            background: ${styleTokens.dark.table.text};
+            background: ${theme.background.active};
             opacity: 0.5;
             content: "";
             left: 0;
@@ -107,25 +101,25 @@ export function generateTableStyles(
         /* Top-left cell */
         tr:first-child td:first-child,
         tr:first-child th:first-child {
-            border-top-left-radius: ${theme.table.table?.borderRadius}rem;
+            border-top-left-radius: 0.5rem;
         }
         
         /* Top-right cell */
         tr:first-child td:last-child,
         tr:first-child th:last-child {
-            border-top-right-radius: ${theme.table.table?.borderRadius}rem;
+            border-top-right-radius: 0.5rem;
         }
         
         /* Bottom-left cell */
         tr:last-child td:first-child,
         tr:last-child th:first-child {
-            border-bottom-left-radius: ${theme.table.table?.borderRadius}rem;
+            border-bottom-left-radius: 0.5rem;
         }
         
         /* Bottom-right cell */
         tr:last-child td:last-child,
         tr:last-child th:last-child {
-            border-bottom-right-radius: ${theme.table.table?.borderRadius}rem;
+            border-bottom-right-radius: 0.5rem;
         }
         
         th, td {
@@ -133,13 +127,17 @@ export function generateTableStyles(
         }
 
         .column-resize-handle {
-            background-color: ${styleTokens.dark.table.border};
+            background-color: ${theme.border.active};
             bottom: -2px;
             pointer-events: none;
             position: absolute;
             right: -2px;
             top: 0;
             width: 4px;
+        }
+
+        .table-controls {
+            padding: 0.5rem;
         }
     `;
 }

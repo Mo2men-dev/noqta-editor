@@ -5,7 +5,7 @@ import {
 	toCamelCase,
 	toKebabCase,
 } from "../../../utils/styling";
-import type { StyleTokens, Theme } from "../../../types/themes";
+import type { Theme } from "../../../types/themes";
 
 describe("Style conversions", () => {
 	it("styleObjectToString: should convert a style object to a CSS string", () => {
@@ -34,26 +34,20 @@ describe("Style conversions", () => {
 describe("Table styles generation", () => {
 	it("generateTableStyles: should generate CSS styles for tables", () => {
 		const theme = {
-			table: {
-				table: { color: "black" },
-				th: { backgroundColor: "lightgray" },
-				td: { backgroundColor: "white" },
+			background: {
+				primary: "#ffffff",
+				hover: "#f0f0f0",
+			},
+			text: {
+				primary: "#000000",
+			},
+			border: {
+				primary: "#cccccc",
 			},
 		} as unknown as Theme;
 
-		const styleTokens = {
-			dark: {
-				table: {
-					text: "black",
-					cellBackground: "white",
-					headerBackground: "lightgray",
-					border: "1px solid gray",
-				},
-			},
-		} as unknown as StyleTokens;
-
 		const extension = { options: { cellWidth: 100 } } as unknown as Extension;
-		const result = generateTableStyles(extension, theme, styleTokens);
+		const result = generateTableStyles(extension, theme);
 		expect(result).toContain("table {");
 		expect(result).toContain("th {");
 		expect(result).toContain("td {");

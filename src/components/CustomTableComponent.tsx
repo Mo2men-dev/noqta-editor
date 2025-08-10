@@ -2,7 +2,6 @@ import { NodeViewContent, NodeViewWrapper } from "@tiptap/react";
 import { useTheme } from "../context/ThemeContext";
 import { generateTableStyles } from "../utils/styling";
 import Button from "./Button";
-import styleTokens from "../constants/styles";
 
 import {
 	RiInsertColumnRight,
@@ -84,7 +83,7 @@ function CustomTableComponent(props: CustomTableComponentProps) {
 				overflow: "scroll",
 				scrollbarWidth: "none",
 			}}>
-			<style>{generateTableStyles(props.extension, theme, styleTokens)}</style>
+			<style>{generateTableStyles(props.extension, theme)}</style>
 
 			{/* @ts-ignore  */}
 			<NodeViewContent as="table" style={{ maxWidth: "100%" }}>
