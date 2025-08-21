@@ -19,21 +19,3 @@ export const darkTheme: Theme = {
 	},
 	shadow: "#000",
 };
-
-export const lightTheme: Theme = {
-	background: {
-		primary: "#eee",
-		hover: "#ddd",
-		active: "#ccc",
-	},
-	text: {
-		primary: "#000",
-		secondary: "#304fcb",
-	},
-	border: {
-		primary: "#304fcb",
-		hover: "#9eb1ff",
-		active: "#fff",
-	},
-	shadow: "#304fcb92",
-};
