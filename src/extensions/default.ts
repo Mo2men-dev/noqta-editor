@@ -24,7 +24,7 @@ import { Paragraph } from "@tiptap/extension-paragraph";
 import { Strike } from "@tiptap/extension-strike";
 import { Text } from "@tiptap/extension-text";
 import { TaskList, TaskItem } from "@tiptap/extension-list";
-import { TextStyle, Color } from "@tiptap/extension-text-style";
+import { TextStyleKit } from "@tiptap/extension-text-style";
 import { Underline } from "@tiptap/extension-underline";
 import { TrailingNode } from "@tiptap/extensions";
 import { RichTextLink } from "./rich-text-links";
@@ -63,7 +63,7 @@ const createDefaultExtensions = (
 		underline: {},
 		highlight: {},
 		image: {},
-		color: {},
+		textStyle: {},
 		link: {},
 		taskList: {},
 		table: {},
@@ -137,8 +137,8 @@ const createDefaultExtensions = (
 	if (options.highlight !== false) {
 		extensions.push(Highlight.configure({ multicolor: true, ...options.highlight }));
 	}
-	if (options.color !== false) {
-		extensions.push(Color.configure(options.color), TextStyle);
+	if (options.textStyle !== false) {
+		extensions.push(TextStyleKit.configure(options.textStyle));
 	}
 	if (options.taskList !== false) {
 		extensions.push(TaskList.configure(options.taskList), TaskItem);

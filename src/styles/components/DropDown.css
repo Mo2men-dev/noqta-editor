@@ -1,0 +1,38 @@
+.noqta-drop-menu {
+	position: relative;
+}
+
+.noqta-drop-menu-content {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+	position: absolute;
+	background: var(--noqta-theme-background-primary);
+	margin-top: 0.5rem;
+	padding: 0.5rem;
+	border-radius: 0.5rem;
+	text-wrap: nowrap;
+	border: 2px solid var(--noqta-theme-border-primary);
+	height: 160px;
+	overflow-y: scroll;
+	scrollbar-width: thin;
+	scrollbar-color: var(--noqta-theme-background-active, #333) transparent;
+	box-shadow: 0 2px 8px var(--noqta-theme-shadow);
+}
+
+.noqta-drop-menu-option {
+	padding: 0.5rem;
+	cursor: pointer;
+	border-radius: 0.25rem;
+	font-size: 0.8rem;
+	transition: all 0.2s ease-in-out;
+}
+
+.noqta-drop-menu-option:hover {
+	background: var(--noqta-theme-background-hover, --noqta-theme-background-primary);
+}
+
+.noqta-drop-menu-option.active {
+	background: var(--noqta-theme-background-active, --noqta-theme-background-primary);
+	color: var(--noqta-theme-text-secondary, --noqta-theme-text-primary);
+}
