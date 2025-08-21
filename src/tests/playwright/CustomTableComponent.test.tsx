@@ -9,7 +9,7 @@ test.beforeEach(async ({ page }) => {
 	await page.keyboard.press("Control+A");
 	await page.keyboard.press("Control+C");
 
-	const bubbleMenu = page.locator(".bubble-menu");
+	const bubbleMenu = page.locator(".noqta-bubble-menu");
 	await bubbleMenu.waitFor({ state: "visible" });
 
 	const tableButton = bubbleMenu.locator('button[title="Table"]');

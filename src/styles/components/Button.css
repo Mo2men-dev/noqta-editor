@@ -1,0 +1,30 @@
+.noqta-button {
+	background-color: var(--noqta-theme-background-primary, #f0f0f0);
+	color: var(--noqta-theme-text-primary, #333);
+	border-color: var(--noqta-theme-border-primary, #ccc);
+	display: flex;
+	align-items: center;
+	padding: 0.5rem;
+	border-radius: 0.5rem;
+	transition: all 0.2s ease-in-out;
+	border-width: 1px;
+	border-style: solid;
+	cursor: pointer;
+}
+
+.noqta-button:hover {
+	background-color: var(--noqta-theme-background-hover, --noqta-theme-background-primary);
+	color: var(--noqta-theme-text-hover, --noqta-theme-text-primary);
+	border-color: var(--noqta-theme-border-hover, --noqta-theme-border-primary);
+}
+
+.noqta-button.active {
+	background-color: var(--noqta-theme-background-active, --noqta-theme-background-primary);
+	color: var(--noqta-theme-text-secondary, --noqta-theme-text-primary);
+	border-color: var(--noqta-theme-border-active, --noqta-theme-border-primary);
+}
+
+.noqta-button:disabled {
+	cursor: not-allowed;
+	opacity: 0.5;
+}
