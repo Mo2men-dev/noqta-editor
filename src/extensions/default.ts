@@ -61,22 +61,12 @@ const createDefaultExtensions = (
 		orderedList: {},
 		strike: {},
 		underline: {},
-		highlight: {
-			multicolor: true,
-		},
-		image: {
-			inline: true,
-			allowBase64: true,
-		},
+		highlight: {},
+		image: {},
 		color: {},
-		link: {
-			openOnClick: true,
-		},
+		link: {},
 		taskList: {},
-		table: {
-			resizable: true,
-			cellMinWidth: 100,
-		},
+		table: {},
 		codeBlockLowlight: true,
 		smartTyping: {},
 	}
@@ -145,7 +135,7 @@ const createDefaultExtensions = (
 		extensions.push(Underline.configure(options.underline));
 	}
 	if (options.highlight !== false) {
-		extensions.push(Highlight.configure(options.highlight));
+		extensions.push(Highlight.configure({ multicolor: true, ...options.highlight }));
 	}
 	if (options.color !== false) {
 		extensions.push(Color.configure(options.color), TextStyle);
@@ -154,13 +144,27 @@ const createDefaultExtensions = (
 		extensions.push(TaskList.configure(options.taskList), TaskItem);
 	}
 	if (options.image !== false) {
-		extensions.push(Image.configure(options.image));
+		extensions.push(Image.configure({ inline: true, allowBase64: true, ...options.image }));
 	}
 	if (options.link !== false) {
-		extensions.push(RichTextLink.configure(options.link));
+		extensions.push(
+			RichTextLink.configure({
+				openOnClick: true,
+				...options.link,
+			})
+		);
 	}
 	if (options.table !== false) {
-		extensions.push(CustomTable.configure(options.table), TableCell, TableRow, TableHeader);
+		extensions.push(
+			CustomTable.configure({
+				resizable: true,
+				cellMinWidth: 100,
+				...options.table,
+			}),
+			TableCell,
+			TableRow,
+			TableHeader
+		);
 	}
 	if (options.codeBlockLowlight !== false) {
 		extensions.push(SyntaxHighlight);
