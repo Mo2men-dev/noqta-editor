@@ -1,6 +1,4 @@
 import { NodeViewContent, NodeViewWrapper } from "@tiptap/react";
-import { useTheme } from "../context/ThemeContext";
-import { generateTableStyles } from "../utils/styling";
 import Button from "./Button";
 
 import {
@@ -16,6 +14,7 @@ import { TbTableColumn, TbTableRow } from "react-icons/tb";
 
 import type { CustomTableComponentProps } from "../types/components";
 import HorizontalCenter from "../layout-components/HorizontalCenter";
+import "../styles/components/CustomTableComponent.css";
 
 /**
  * CustomTableComponent is a React component that renders a table with various controls
@@ -23,8 +22,6 @@ import HorizontalCenter from "../layout-components/HorizontalCenter";
  * merging cells, and toggling header rows and columns.
  */
 function CustomTableComponent(props: CustomTableComponentProps) {
-	const theme = useTheme()!;
-
 	const controls = useMemo(() => {
 		return {
 			addRowAfter: {
@@ -76,14 +73,8 @@ function CustomTableComponent(props: CustomTableComponentProps) {
 	}, []);
 
 	return (
-		<NodeViewWrapper
-			style={{
-				marginTop: "0.5rem",
-				marginBottom: "0.5rem",
-				overflow: "scroll",
-				scrollbarWidth: "none",
-			}}>
-			<style>{generateTableStyles(props.extension, theme)}</style>
+		<NodeViewWrapper className="noqta-custom-table">
+			<style>{`th, td { min-width: ${props.extension.options.cellMinWidth}px;}`}</style>
 
 			{/* @ts-ignore  */}
 			<NodeViewContent as="table" style={{ maxWidth: "100%" }}>
@@ -100,7 +91,7 @@ function CustomTableComponent(props: CustomTableComponentProps) {
 					<Button
 						key={control.label}
 						title={control.label}
-						icon={control.icon}
+						children={control.icon}
 						onClick={control.action}
 						style={{
 							margin: "0.25rem 0",

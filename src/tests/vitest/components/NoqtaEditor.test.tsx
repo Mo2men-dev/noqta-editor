@@ -1,7 +1,6 @@
 import { Extension } from "@tiptap/core";
 import { NoqtaEditor } from "../../../components/NoqtaEditor";
 import { render, screen } from "@testing-library/react";
-import type { Theme } from "../../../types/themes";
 
 describe("NoqtaEditor", () => {
 	it("renders without crashing", () => {
@@ -110,36 +109,6 @@ describe("NoqtaEditor", () => {
 
 		const codeText = screen.getByRole("code");
 		expect(codeText).toHaveTextContent("code");
-	});
-
-	it("renders dark theme as default", () => {
-		render(<NoqtaEditor />);
-		const editor = screen.getByRole("textbox");
-		expect(editor).toHaveStyle("background-color: #222");
-		expect(editor).toHaveStyle("color: #fff");
-	});
-
-	it("applies custom theme styles", () => {
-		const customTheme = {
-			background: {
-				primary: "#ff0000",
-				hover: "#ffcccc",
-			},
-			text: {
-				primary: "#00ff00",
-				hover: "#00cc00",
-			},
-			border: {
-				primary: "#0000ff",
-				hover: "#ccccff",
-			},
-			shadow: "rgba(0, 0, 0, 0.5)",
-		} as unknown as Theme;
-
-		render(<NoqtaEditor theme={customTheme} />);
-		const editor = screen.getByRole("textbox");
-		expect(editor).toHaveStyle("background-color: #ff0000");
-		expect(editor).toHaveStyle("color: #00ff00");
 	});
 
 	it("applies custom styles", () => {

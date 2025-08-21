@@ -1,11 +1,5 @@
-import type { Extension } from "@tiptap/react";
-import {
-	generateTableStyles,
-	styleObjectToString,
-	toCamelCase,
-	toKebabCase,
-} from "../../../utils/styling";
 import type { Theme } from "../../../types/themes";
+import { getCssVariablesFromTheme, styleObjectToString, toKebabCase } from "../../../utils/styling";
 
 describe("Style conversions", () => {
 	it("styleObjectToString: should convert a style object to a CSS string", () => {
@@ -24,32 +18,36 @@ describe("Style conversions", () => {
 		expect(result).toBe("background-color");
 	});
 
-	it("toCamelCase: should convert kebab-case to camelCase", () => {
-		const kebabCase = "background-color";
-		const result = toCamelCase(kebabCase);
-		expect(result).toBe("backgroundColor");
-	});
-});
-
-describe("Table styles generation", () => {
-	it("generateTableStyles: should generate CSS styles for tables", () => {
-		const theme = {
+	it("getCssVariablesFromTheme: should convert theme object to CSS variables", () => {
+		const lightTheme: Theme = {
 			background: {
-				primary: "#ffffff",
-				hover: "#f0f0f0",
+				primary: "#eee",
+				hover: "#ddd",
+				active: "#ccc",
 			},
 			text: {
-				primary: "#000000",
+				primary: "#000",
+				secondary: "#304fcb",
 			},
 			border: {
-				primary: "#cccccc",
+				primary: "#304fcb",
+				hover: "#9eb1ff",
+				active: "#fff",
 			},
-		} as unknown as Theme;
+			shadow: "#304fcb92",
+		};
 
-		const extension = { options: { cellWidth: 100 } } as unknown as Extension;
-		const result = generateTableStyles(extension, theme);
-		expect(result).toContain("table {");
-		expect(result).toContain("th {");
-		expect(result).toContain("td {");
+		const result = getCssVariablesFromTheme(lightTheme);
+		expect(result).toEqual({
+			"--noqta-theme-background-primary": "#eee",
+			"--noqta-theme-background-hover": "#ddd",
+			"--noqta-theme-background-active": "#ccc",
+			"--noqta-theme-text-primary": "#000",
+			"--noqta-theme-text-secondary": "#304fcb",
+			"--noqta-theme-border-primary": "#304fcb",
+			"--noqta-theme-border-hover": "#9eb1ff",
+			"--noqta-theme-border-active": "#fff",
+			"--noqta-theme-shadow": "#304fcb92",
+		});
 	});
 });

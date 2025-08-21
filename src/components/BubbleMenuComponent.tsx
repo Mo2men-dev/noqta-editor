@@ -12,17 +12,16 @@ import { PiHighlighterBold } from "react-icons/pi";
 
 import { BubbleMenu } from "../extended-components/BubbleMenu";
 import Button from "./Button";
-import { useTheme } from "../context/ThemeContext";
 import { Editor } from "@tiptap/core";
 import { useEffect, useState } from "react";
 import ColorInput from "./ColorInput";
 import HorizontalCenter from "../layout-components/HorizontalCenter";
+import "../styles/components/BubbleMenuComponent.css";
 
 /**
  * A BubbleMenuComponent for Tiptap editor that provides text formatting options.
  */
 function BubbleMenuComponent({ editor }: { editor: Editor }) {
-	const theme = useTheme()!;
 	const [, setTick] = useState(0); // to force rerender on selection change
 	const [highlightColor, setHighlightColor] = useState("#ffff00");
 	const [textColor, setTextColor] = useState("#ffffff");
@@ -41,21 +40,7 @@ function BubbleMenuComponent({ editor }: { editor: Editor }) {
 	return (
 		<BubbleMenu
 			editor={editor}
-			className="bubble-menu"
-			style={{
-				display: "flex",
-				position: "absolute",
-				zIndex: 1000,
-				padding: "0.25rem",
-				borderRadius: "0.75rem",
-				fontSize: "0.75rem",
-				gap: "0.25rem",
-				boxShadow: `0 2px 4px ${theme.shadow || "rgba(0, 0, 0, 0.2)"}`,
-				borderWidth: "2px",
-				borderStyle: "solid",
-				background: theme.background.primary,
-				borderColor: theme.border.primary || "transparent",
-			}}
+			className="noqta-bubble-menu"
 			shouldShow={({ editor, from, to }: { editor: Editor; from: number; to: number }) => {
 				return (
 					from !== to && // Only show if there is a selection
@@ -70,7 +55,7 @@ function BubbleMenuComponent({ editor }: { editor: Editor }) {
 			<HorizontalCenter>
 				<Button
 					title="Bold"
-					icon={<FaBold />}
+					children={<FaBold />}
 					active={editor.isActive("bold")}
 					onClick={() =>
 						editor
@@ -83,7 +68,7 @@ function BubbleMenuComponent({ editor }: { editor: Editor }) {
 				/>
 				<Button
 					title="Italic"
-					icon={<FaItalic />}
+					children={<FaItalic />}
 					active={editor.isActive("italic")}
 					onClick={() =>
 						editor
@@ -96,7 +81,7 @@ function BubbleMenuComponent({ editor }: { editor: Editor }) {
 				/>
 				<Button
 					title="Strikethrough"
-					icon={<FaStrikethrough />}
+					children={<FaStrikethrough />}
 					active={editor.isActive("strike")}
 					onClick={() =>
 						editor
@@ -110,24 +95,24 @@ function BubbleMenuComponent({ editor }: { editor: Editor }) {
 				<Button
 					title="Underline"
 					active={editor.isActive("underline")}
-					icon={<FaUnderline />}
+					children={<FaUnderline />}
 					onClick={() => editor.chain().focus().toggleUnderline().run()}
 				/>
 				<Button
 					title="Task List"
 					active={editor.isActive("taskList")}
-					icon={<MdCheckBox />}
+					children={<MdCheckBox />}
 					onClick={() => editor.chain().focus().toggleTaskList().run()}
 				/>
 				<Button
 					title="Code"
 					active={editor.isActive("code")}
-					icon={<FaCode />}
+					children={<FaCode />}
 					onClick={() => editor.chain().focus().toggleCode().run()}
 				/>
 				<Button
 					title="Link"
-					icon={<FaLink />}
+					children={<FaLink />}
 					active={editor.isActive("link")}
 					onClick={() => {
 						const url = window.prompt("URL");
@@ -138,7 +123,7 @@ function BubbleMenuComponent({ editor }: { editor: Editor }) {
 				/>
 				<Button
 					title="Table"
-					icon={<FaTable />}
+					children={<FaTable />}
 					onClick={() =>
 						editor.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run()
 					}
@@ -155,7 +140,7 @@ function BubbleMenuComponent({ editor }: { editor: Editor }) {
 			<HorizontalCenter>
 				<Button
 					title="Highlight"
-					icon={<PiHighlighterBold />}
+					children={<PiHighlighterBold />}
 					style={{ color: highlightColor }}
 					onClick={() => editor.chain().focus().toggleHighlight({ color: highlightColor }).run()}
 				/>

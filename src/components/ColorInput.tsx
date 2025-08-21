@@ -1,4 +1,5 @@
 import type { ColorInputProps } from "../types/components";
+import "../styles/components/ColorInput.css";
 
 /**
  * ColorInput component for selecting colors in a color picker format.
@@ -6,19 +7,9 @@ import type { ColorInputProps } from "../types/components";
 function ColorInput(props: ColorInputProps) {
 	return (
 		<input
+			className="noqta-color-input"
 			title={props.title}
 			type="color"
-			style={{
-				border: "none",
-				outlineWidth: "2px",
-				outlineColor: "transparent",
-				outlineOffset: "2px",
-				background: "transparent",
-				borderRadius: "9999px",
-				width: "100%",
-				cursor: "pointer",
-				aspectRatio: "1 / 1",
-			}}
 			value={props.value}
 			onChange={(e) => props.onChange?.(e)}
 		/>
