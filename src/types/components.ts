@@ -14,7 +14,7 @@ export interface NoqtaEditorProps {
 
 export type ButtonProps = {
 	title: string;
-	icon: string | React.ReactNode;
+	children: string | React.ReactNode;
 	onClick: () => void;
 	style?: React.CSSProperties;
 	active?: boolean;

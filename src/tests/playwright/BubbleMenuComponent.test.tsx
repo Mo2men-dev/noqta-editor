@@ -12,7 +12,7 @@ test.beforeEach(async ({ page }) => {
 	await page.keyboard.press("Control+A");
 	await page.keyboard.press("Control+C");
 
-	bubbleMenu = page.locator(".bubble-menu");
+	bubbleMenu = page.locator(".noqta-bubble-menu");
 	await bubbleMenu.waitFor({ state: "visible" });
 });
 
