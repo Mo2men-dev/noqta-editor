@@ -1,3 +1,11 @@
+# [1.0.1](https://github.com/Mo2men-dev/noqta-editor/compare/v1.0.0...v1.0.1) - (22-8-2025)
+
+### Refactorings
+
+- Refactored the Styling system of the editor.
+
+We refactored the styling system to use CSS variables instead of React Context and inline styles. This should improve performance by reducing the number of re-renders required when styles change.
+
 ## [1.0.0](https://github.com/Mo2men-dev/noqta-editor/compare/v0.10.0...v1.0.0) - (11-8-2025)
 
 ### Breaking Changes
