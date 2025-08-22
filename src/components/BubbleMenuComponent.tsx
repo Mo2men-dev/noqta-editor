@@ -7,7 +7,7 @@ import {
 	FaCode,
 	FaTable,
 } from "react-icons/fa6";
-import { MdCheckBox } from "react-icons/md";
+import { MdCheckBox, MdFormatColorText } from "react-icons/md";
 import { PiHighlighterBold } from "react-icons/pi";
 
 import { BubbleMenu } from "../extended-components/BubbleMenu";
@@ -17,11 +17,14 @@ import { useEffect, useState } from "react";
 import ColorInput from "./ColorInput";
 import HorizontalCenter from "../layout-components/HorizontalCenter";
 import "../styles/components/BubbleMenuComponent.css";
+import { FONTS } from "../constants/fonts";
+import DropDown from "./DropDown";
 
 /**
  * A BubbleMenuComponent for Tiptap editor that provides text formatting options.
  */
 function BubbleMenuComponent({ editor }: { editor: Editor }) {
+	const [font, setFont] = useState("Atkinson Hyperlegible");
 	const [, setTick] = useState(0); // to force rerender on selection change
 	const [highlightColor, setHighlightColor] = useState("#ffff00");
 	const [textColor, setTextColor] = useState("#ffffff");
@@ -162,12 +165,32 @@ function BubbleMenuComponent({ editor }: { editor: Editor }) {
 				<ColorInput
 					title="Text Color"
 					value={textColor}
-					onChange={(e) => {
-						editor.chain().focus().setColor(e.target.value).run();
-						setTextColor(e.target.value);
-					}}
+					onChange={(e) => setTextColor(e.target.value)}
+				/>
+				<Button
+					title="Text Color"
+					children={<MdFormatColorText />}
+					style={{ color: textColor }}
+					onClick={() => editor.chain().focus().setColor(textColor).run()}
 				/>
 			</HorizontalCenter>
+			<hr
+				style={{
+					border: "2px solid #333",
+					marginTop: "auto",
+					marginBottom: "auto",
+					borderRadius: "9999px",
+				}}
+			/>
+			<DropDown
+				title="Font Family"
+				activeOption={font}
+				options={Object.keys(FONTS)}
+				onClickHandler={(option: any) => {
+					setFont(option);
+					editor.chain().focus().setFontFamily(option).run();
+				}}
+			/>
 		</BubbleMenu>
 	);
 }

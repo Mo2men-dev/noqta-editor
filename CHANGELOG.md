@@ -1,3 +1,9 @@
+# [1.1.0](https://github.com/Mo2men-dev/noqta-editor/compare/v1.0.1...v1.1.0) - (22-8-2025)
+
+### Features
+
+- Added support for changing the font in the editor.
+
 # [1.0.1](https://github.com/Mo2men-dev/noqta-editor/compare/v1.0.0...v1.0.1) - (22-8-2025)
 
 ### Refactorings

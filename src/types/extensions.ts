@@ -14,7 +14,7 @@ import type { StrikeOptions } from "@tiptap/extension-strike";
 import type { LinkOptions } from "@tiptap/extension-link";
 import type { TaskListOptions } from "@tiptap/extension-list";
 import type { HighlightOptions } from "@tiptap/extension-highlight";
-import type { ColorOptions } from "@tiptap/extension-text-style";
+import type { TextStyleKitOptions } from "@tiptap/extension-text-style";
 import type { UnderlineOptions } from "@tiptap/extension-underline";
 import type { ImageOptions } from "@tiptap/extension-image";
 import type { TableOptions } from "@tiptap/extension-table";
@@ -36,7 +36,7 @@ export interface DefaultExtensions {
 	strike?: Partial<StrikeOptions> | false;
 	underline?: Partial<UnderlineOptions> | false;
 	highlight?: Partial<HighlightOptions> | false;
-	color?: Partial<ColorOptions> | false;
+	textStyle?: Partial<TextStyleKitOptions> | false;
 	link?: Partial<LinkOptions> | false;
 	taskList?: Partial<TaskListOptions> | false;
 	image?: Partial<ImageOptions> | false;

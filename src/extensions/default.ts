@@ -24,7 +24,7 @@ import { Paragraph } from "@tiptap/extension-paragraph";
 import { Strike } from "@tiptap/extension-strike";
 import { Text } from "@tiptap/extension-text";
 import { TaskList, TaskItem } from "@tiptap/extension-list";
-import { TextStyle, Color } from "@tiptap/extension-text-style";
+import { TextStyleKit } from "@tiptap/extension-text-style";
 import { Underline } from "@tiptap/extension-underline";
 import { TrailingNode } from "@tiptap/extensions";
 import { RichTextLink } from "./rich-text-links";
@@ -61,22 +61,12 @@ const createDefaultExtensions = (
 		orderedList: {},
 		strike: {},
 		underline: {},
-		highlight: {
-			multicolor: true,
-		},
-		image: {
-			inline: true,
-			allowBase64: true,
-		},
-		color: {},
-		link: {
-			openOnClick: true,
-		},
+		highlight: {},
+		image: {},
+		textStyle: {},
+		link: {},
 		taskList: {},
-		table: {
-			resizable: true,
-			cellMinWidth: 100,
-		},
+		table: {},
 		codeBlockLowlight: true,
 		smartTyping: {},
 	}
@@ -145,22 +135,36 @@ const createDefaultExtensions = (
 		extensions.push(Underline.configure(options.underline));
 	}
 	if (options.highlight !== false) {
-		extensions.push(Highlight.configure(options.highlight));
+		extensions.push(Highlight.configure({ multicolor: true, ...options.highlight }));
 	}
-	if (options.color !== false) {
-		extensions.push(Color.configure(options.color), TextStyle);
+	if (options.textStyle !== false) {
+		extensions.push(TextStyleKit.configure(options.textStyle));
 	}
 	if (options.taskList !== false) {
 		extensions.push(TaskList.configure(options.taskList), TaskItem);
 	}
 	if (options.image !== false) {
-		extensions.push(Image.configure(options.image));
+		extensions.push(Image.configure({ inline: true, allowBase64: true, ...options.image }));
 	}
 	if (options.link !== false) {
-		extensions.push(RichTextLink.configure(options.link));
+		extensions.push(
+			RichTextLink.configure({
+				openOnClick: true,
+				...options.link,
+			})
+		);
 	}
 	if (options.table !== false) {
-		extensions.push(CustomTable.configure(options.table), TableCell, TableRow, TableHeader);
+		extensions.push(
+			CustomTable.configure({
+				resizable: true,
+				cellMinWidth: 100,
+				...options.table,
+			}),
+			TableCell,
+			TableRow,
+			TableHeader
+		);
 	}
 	if (options.codeBlockLowlight !== false) {
 		extensions.push(SyntaxHighlight);
