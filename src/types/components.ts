@@ -32,3 +32,10 @@ export type CustomTableComponentProps = {
 	node: Node;
 	extension: any;
 };
+
+export type DropDownProps = {
+	title?: string;
+	options: any[];
+	activeOption: any;
+	onClickHandler: (option: string) => void;
+};
