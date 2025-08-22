@@ -44,3 +44,20 @@ test("BubbleMenuComponent should hide when clicking outside", async ({ page }) =
 	await page.click("body");
 	expect(await bubbleMenu.isVisible()).toBeFalsy();
 });
+
+test("BubbleMenuComponent should change font", async () => {
+	const fontButton = bubbleMenu.locator('button[title="Font Family"]');
+	await fontButton.click();
+
+	const fontOptions = bubbleMenu.locator(".noqta-drop-menu-option");
+	await fontOptions.nth(1).click(); // Assuming the second option is "Inter"
+
+	const fontButtonFirstElement = fontButton.locator("span");
+	expect(await fontButtonFirstElement.textContent()).toBe("Inter");
+	expect(await fontButtonFirstElement.evaluate((el) => el.style.fontFamily)).toBe("Inter");
+
+	const fontSpan = paragraph.locator("span");
+	expect(await fontSpan.evaluate((el) => el.getAttribute("style"))).toContain(
+		"font-family: Inter;"
+	);
+});
