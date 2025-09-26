@@ -22,7 +22,6 @@
 				"prepareCmd": "npx prettier --write CHANGELOG.md"
 			}
 		],
-		"@semantic-release/npm",
 		"@semantic-release/git",
 		"@semantic-release/github"
 	]
