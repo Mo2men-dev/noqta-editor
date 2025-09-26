@@ -1,3 +1,9 @@
+## [1.2.0](https://github.com/Mo2men-dev/noqta-editor/compare/v1.1.0...v1.2.0) (2025-09-26)
+
+### Features
+
+- **tools-menu:** created a top menu that includes multible tools ([e87e5e6](https://github.com/Mo2men-dev/noqta-editor/commit/e87e5e67db524f58e628af91ecd5513cccd53b89))
+
 # [1.1.0](https://github.com/Mo2men-dev/noqta-editor/compare/v1.0.1...v1.1.0) - (22-8-2025)
 
 ### Features
