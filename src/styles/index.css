@@ -7,7 +7,6 @@
 	scrollbar-width: thin;
 	scrollbar-color: #444 transparent;
 	padding: 1.25rem;
-	border-radius: 0.5rem;
 	outline: none;
 	height: 100%;
 }
@@ -26,7 +25,8 @@
 
 #editor-container {
 	height: 100%;
-	padding: 20px;
+	display: flex;
+	flex-direction: column;
 }
 
 #editor-container input[type="color"] {

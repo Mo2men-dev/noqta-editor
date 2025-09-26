@@ -1,5 +1,5 @@
-import type { ColorInputProps } from "../types/components";
-import "../styles/components/ColorInput.css";
+import type { ColorInputProps } from "../../types/components";
+import "../../styles/components/ColorInput.css";
 
 /**
  * ColorInput component for selecting colors in a color picker format.

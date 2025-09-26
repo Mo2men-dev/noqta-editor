@@ -1,5 +1,5 @@
-import type { ButtonProps } from "../types/components";
-import "../styles/components/Button.css";
+import type { ButtonProps } from "../../types/components";
+import "../../styles/components/Button.css";
 
 function Button(props: ButtonProps) {
 	return (

@@ -34,7 +34,6 @@ export type CustomTableComponentProps = {
 };
 
 export type DropDownProps = {
-	title?: string;
 	options: any[];
 	activeOption: any;
 	onClickHandler: (option: string) => void;

@@ -1,16 +1,16 @@
 import { IoIosArrowDown } from "react-icons/io";
-import Button from "./Button";
 import { useState } from "react";
-import { FONTS } from "../constants/fonts";
-import "../styles/components/DropDown.css";
-import type { DropDownProps } from "../types/components";
+import { FONTS } from "../../constants/fonts";
+import "../../styles/components/DropDown.css";
+import type { DropDownProps } from "../../types/components";
 
-function DropDown({ title = "Dropdown", options, activeOption, onClickHandler }: DropDownProps) {
+function DropDown({ options, activeOption, onClickHandler }: DropDownProps) {
 	const [dropdownOpen, setDropdownOpen] = useState(false);
 	return (
 		<menu className="noqta-drop-menu">
-			<Button title={title} style={{ gap: "1rem" }} onClick={() => setDropdownOpen(!dropdownOpen)}>
+			<div className="noqta-drop-menu-header" onClick={() => setDropdownOpen(!dropdownOpen)}>
 				<span
+					className="noqta-drop-menu-active-option"
 					style={{
 						fontFamily: Object.keys(FONTS).includes(activeOption) ? activeOption : "",
 					}}>
@@ -22,7 +22,7 @@ function DropDown({ title = "Dropdown", options, activeOption, onClickHandler }:
 						transition: "transform 0.2s ease-in-out",
 					}}
 				/>
-			</Button>
+			</div>
 			{dropdownOpen && (
 				<div className="noqta-drop-menu-content">
 					{options.map((option) => (

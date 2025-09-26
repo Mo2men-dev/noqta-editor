@@ -6,13 +6,14 @@ import { ThemeProvider } from "../context/ThemeContext";
 import { styleObjectToString } from "../utils/styling";
 import type { NoqtaEditorProps } from "../types/components";
 
-import BubbleMenuComponent from "./BubbleMenuComponent";
+import BubbleMenuComponent from "./extensions-components/BubbleMenuComponent";
 import createDefaultExtensions from "../extensions/default";
 
 import "../styles/index.css";
 import "../styles/syntax.css";
 import "../styles/markdown.css";
 import "../styles/components/NoqtaEditor.css";
+import ToolsMenuComponent from "./ToolsMenuComponent";
 
 /**
  * NoqtaEditor is a React component that provides a rich text editor using [Tiptap](https://tiptap.dev/).
@@ -47,7 +48,11 @@ function NoqtaEditor(props: NoqtaEditorProps) {
 	return (
 		<ThemeProvider theme={theme}>
 			{editor && <BubbleMenuComponent editor={editor} />}
-			{editor && <EditorContent editor={editor} id="editor-container" />}
+			{editor && (
+				<EditorContent editor={editor} id="editor-container">
+					{editor && <ToolsMenuComponent editor={editor} />}
+				</EditorContent>
+			)}
 		</ThemeProvider>
 	);
 }
