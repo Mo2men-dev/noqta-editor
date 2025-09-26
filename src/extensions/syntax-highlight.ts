@@ -1,5 +1,5 @@
 import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
-import CodeBlockComponent from "../components/CodeBlockComponent";
+import CodeBlockComponent from "../components/extensions-components/CodeBlockComponent";
 
 import { all, createLowlight } from "lowlight";
 import { ReactNodeViewRenderer } from "@tiptap/react";

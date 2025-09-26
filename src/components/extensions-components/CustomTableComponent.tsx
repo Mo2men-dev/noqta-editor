@@ -1,5 +1,5 @@
 import { NodeViewContent, NodeViewWrapper } from "@tiptap/react";
-import Button from "./Button";
+import Button from "../ui-elements/Button";
 
 import {
 	RiInsertColumnRight,
@@ -12,9 +12,9 @@ import { useMemo } from "react";
 import { FaSquareH, FaTrash } from "react-icons/fa6";
 import { TbTableColumn, TbTableRow } from "react-icons/tb";
 
-import type { CustomTableComponentProps } from "../types/components";
-import HorizontalCenter from "../layout-components/HorizontalCenter";
-import "../styles/components/CustomTableComponent.css";
+import type { CustomTableComponentProps } from "../../types/components";
+import HorizontalCenter from "../../layout-components/HorizontalCenter";
+import "../../styles/components/CustomTableComponent.css";
 
 /**
  * CustomTableComponent is a React component that renders a table with various controls

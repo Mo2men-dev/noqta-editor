@@ -1,6 +1,6 @@
 import { Table } from "@tiptap/extension-table";
 import { ReactNodeViewRenderer } from "@tiptap/react";
-import CustomTableComponent from "../components/CustomTableComponent";
+import CustomTableComponent from "../components/extensions-components/CustomTableComponent";
 
 const CustomTable = Table.configure({
 	resizable: true,

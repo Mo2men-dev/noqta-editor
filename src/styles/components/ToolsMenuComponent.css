@@ -1,0 +1,32 @@
+#tools-menu {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	z-index: 1000;
+	padding: 0.2rem;
+	border-bottom: 2px solid transparent;
+	border-image: linear-gradient(
+			to right,
+			var(--noqta-theme-border-secondary, transparent),
+			var(--noqta-theme-border-primary, transparent),
+			var(--noqta-theme-border-primary, transparent),
+			var(--noqta-theme-border-primary, transparent),
+			var(--noqta-theme-border-secondary, transparent)
+		)
+		1;
+}
+
+#tools-menu .font-formatting-tools .noqta-button,
+#tools-menu .content-formatting-tools .noqta-button,
+#tools-menu .font-styling-tools .noqta-button {
+	border: none;
+}
+
+#tools-menu .separator {
+	width: 2px;
+	height: 20px;
+	background: var(--noqta-theme-border-primary, transparent);
+	margin: 0 6px;
+	border-radius: 10px;
+}
