@@ -1,4 +1,4 @@
-import { BubbleMenu } from "../../extended-components/BubbleMenu";
+import { BubbleMenu } from "../extended-components/BubbleMenu";
 import { Editor } from "@tiptap/core";
 import { useEffect, useState } from "react";
 import "../../styles/components/BubbleMenuComponent.css";

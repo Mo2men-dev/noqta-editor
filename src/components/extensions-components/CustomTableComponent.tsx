@@ -13,7 +13,7 @@ import { FaSquareH, FaTrash } from "react-icons/fa6";
 import { TbTableColumn, TbTableRow } from "react-icons/tb";
 
 import type { CustomTableComponentProps } from "../../types/components";
-import HorizontalCenter from "../../layout-components/HorizontalCenter";
+import HorizontalCenter from "../layout-components/HorizontalCenter";
 import "../../styles/components/CustomTableComponent.css";
 
 /**
