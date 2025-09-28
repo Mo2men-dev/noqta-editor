@@ -1,3 +1,9 @@
+## [1.2.1](https://github.com/Mo2men-dev/noqta-editor/compare/v1.2.0...v1.2.1) (2025-09-28)
+
+### Bug Fixes
+
+- **tables:** don't allow adding a table when inside of a table ([441d2f8](https://github.com/Mo2men-dev/noqta-editor/commit/441d2f83acf0b2c37c180a11cf7c65d5a6f27898))
+
 ## [1.2.0](https://github.com/Mo2men-dev/noqta-editor/compare/v1.1.0...v1.2.0) (2025-09-26)
 
 ### Features
