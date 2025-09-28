@@ -1,3 +1,9 @@
+## [1.3.0](https://github.com/Mo2men-dev/noqta-editor/compare/v1.2.1...v1.3.0) (2025-09-28)
+
+### Features
+
+- **extentions:** added ability to align text in the document ([29bce67](https://github.com/Mo2men-dev/noqta-editor/commit/29bce67b132de9615272ed532db0fc988190c2aa))
+
 ## [1.2.1](https://github.com/Mo2men-dev/noqta-editor/compare/v1.2.0...v1.2.1) (2025-09-28)
 
 ### Bug Fixes
