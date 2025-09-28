@@ -36,9 +36,10 @@ function ContentFormatingTools({ editor }: { editor: Editor }) {
 			<Button
 				title="Table"
 				children={<FaTable />}
-				onClick={() =>
-					editor.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run()
-				}
+				disabled={editor.isActive("customTable")}
+				onClick={() => {
+					editor.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run();
+				}}
 			/>
 		</HorizontalCenter>
 	);
