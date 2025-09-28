@@ -1,7 +1,7 @@
 import { Editor } from "@tiptap/core";
 import { FaCode, FaLink, FaTable } from "react-icons/fa6";
 import { MdCheckBox } from "react-icons/md";
-import HorizontalCenter from "../../layout-components/HorizontalCenter";
+import HorizontalCenter from "../layout-components/HorizontalCenter";
 import Button from "../ui-elements/Button";
 
 /**

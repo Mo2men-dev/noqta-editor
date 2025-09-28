@@ -1,6 +1,6 @@
 import { Editor } from "@tiptap/core";
 import { FaBold, FaItalic, FaStrikethrough, FaUnderline } from "react-icons/fa6";
-import HorizontalCenter from "../../layout-components/HorizontalCenter";
+import HorizontalCenter from "../layout-components/HorizontalCenter";
 import Button from "../ui-elements/Button";
 import { PiHighlighterBold } from "react-icons/pi";
 import ColorInput from "../ui-elements/ColorInput";

@@ -35,6 +35,7 @@ import Image from "@tiptap/extension-image";
 import Highlight from "@tiptap/extension-highlight";
 import CustomTable from "./extended-tables";
 import SyntaxHighlight from "./syntax-highlight";
+import TextAlign from "@tiptap/extension-text-align";
 
 import type { DefaultExtensions } from "../types/extensions";
 import { addAttributeToMark } from "../utils/marks";
@@ -69,6 +70,7 @@ const createDefaultExtensions = (
 		table: {},
 		codeBlockLowlight: true,
 		smartTyping: {},
+		textAlign: {},
 	}
 ): Array<any> => {
 	const extensions = [];
@@ -171,6 +173,15 @@ const createDefaultExtensions = (
 	}
 	if (options.smartTyping !== false) {
 		extensions.push(SmartTyping.configure(options.smartTyping));
+	}
+	if (options.textAlign !== false) {
+		extensions.push(
+			TextAlign.configure({
+				types: ["heading", "paragraph", "blockquote", "listItem", "taskItem"],
+				defaultAlignment: "left",
+				...options.textAlign,
+			})
+		);
 	}
 
 	extensions.push(

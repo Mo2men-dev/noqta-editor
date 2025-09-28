@@ -18,6 +18,7 @@ import type { TextStyleKitOptions } from "@tiptap/extension-text-style";
 import type { UnderlineOptions } from "@tiptap/extension-underline";
 import type { ImageOptions } from "@tiptap/extension-image";
 import type { TableOptions } from "@tiptap/extension-table";
+import type { TextAlignOptions } from "@tiptap/extension-text-align";
 
 export interface DefaultExtensions {
 	blockquote?: Partial<BlockquoteOptions> | false;
@@ -43,6 +44,7 @@ export interface DefaultExtensions {
 	table?: Partial<TableOptions> | false;
 	codeBlockLowlight?: boolean;
 	smartTyping?: Partial<SmartTypingOptions> | false;
+	textAlign?: Partial<TextAlignOptions> | false;
 }
 
 /**
