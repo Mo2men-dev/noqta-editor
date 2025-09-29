@@ -36,7 +36,6 @@ jobs:
       - name: Run release script
         env:
           GITHUB_TOKEN: ${{ secrets.GH_REPO_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npx semantic-release
     env:
       GITHUB_TOKEN: ${{ secrets.GH_REPO_TOKEN }}
