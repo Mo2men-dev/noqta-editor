@@ -43,3 +43,14 @@
 #editor-container input[type="color"]::-webkit-color-swatch {
 	border: none;
 }
+
+#editor-container p:has(> img[addedImg="noqta-added-img"]) {
+	display: flex;
+	justify-content: center;
+}
+
+#editor-container img[addedImg="noqta-added-img"] {
+	width: 50%;
+	aspect-ratio: 2 / 1;
+	border-radius: 1rem;
+}
