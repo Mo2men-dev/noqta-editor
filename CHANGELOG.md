@@ -1,3 +1,9 @@
+## [1.4.0](https://github.com/Mo2men-dev/noqta-editor/compare/v1.3.0...v1.4.0) (2025-09-29)
+
+### Features
+
+- **extensions:** added ability to add an image from toolbar ([c425c51](https://github.com/Mo2men-dev/noqta-editor/commit/c425c51b08e37331d7ff34138d2b944b8d5d2631))
+
 ## [1.3.0](https://github.com/Mo2men-dev/noqta-editor/compare/v1.2.1...v1.3.0) (2025-09-28)
 
 ### Features
