@@ -15,6 +15,7 @@ import { TbTableColumn, TbTableRow } from "react-icons/tb";
 import type { CustomTableComponentProps } from "../../types/components";
 import HorizontalCenter from "../layout-components/HorizontalCenter";
 import "../../styles/components/CustomTableComponent.css";
+import useForceRerender from "../../hooks/ForceRerender";
 
 /**
  * CustomTableComponent is a React component that renders a table with various controls
@@ -22,6 +23,9 @@ import "../../styles/components/CustomTableComponent.css";
  * merging cells, and toggling header rows and columns.
  */
 function CustomTableComponent(props: CustomTableComponentProps) {
+	// Force rerender on editor updates to reflect changes in table controls
+	useForceRerender(props.editor);
+
 	const controls = useMemo(() => {
 		return {
 			addRowAfter: {
@@ -86,19 +90,21 @@ function CustomTableComponent(props: CustomTableComponentProps) {
 					</colgroup>
 				}
 			</NodeViewContent>
-			<HorizontalCenter className="table-controls">
-				{Object.values(controls).map((control) => (
-					<Button
-						key={control.label}
-						title={control.label}
-						children={control.icon}
-						onClick={control.action}
-						style={{
-							margin: "0.25rem 0",
-						}}
-					/>
-				))}
-			</HorizontalCenter>
+			{props.editor.isActive("customTable") && (
+				<HorizontalCenter className="table-controls">
+					{Object.values(controls).map((control) => (
+						<Button
+							key={control.label}
+							title={control.label}
+							children={control.icon}
+							onClick={control.action}
+							style={{
+								margin: "0.25rem 0",
+							}}
+						/>
+					))}
+				</HorizontalCenter>
+			)}
 		</NodeViewWrapper>
 	);
 }

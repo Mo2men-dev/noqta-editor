@@ -26,7 +26,6 @@ function NoqtaEditor(props: NoqtaEditorProps) {
 		() => createDefaultExtensions(props.defaultExtensionsConfig),
 		[props.defaultExtensionsConfig]
 	);
-	defaultExtensions.forEach((ext) => ext.name === "textAlign" && console.log(ext.name));
 
 	// Combine default extensions with any additional extensions provided via props
 	const extensions = useMemo(() => {

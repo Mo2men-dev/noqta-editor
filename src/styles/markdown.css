@@ -32,31 +32,31 @@
 	font-size: 1em;
 }
 
-#editor-container h1::before,
-#editor-container h2::before,
-#editor-container h3::before,
-#editor-container h4::before,
-#editor-container h5::before,
-#editor-container h6::before {
+#editor-container h1[data-symbol]::before,
+#editor-container h2[data-symbol]::before,
+#editor-container h3[data-symbol]::before,
+#editor-container h4[data-symbol]::before,
+#editor-container h5[data-symbol]::before,
+#editor-container h6[data-symbol]::before {
 	opacity: 0.5;
 }
 
-#editor-container h1::before {
+#editor-container h1[data-symbol]::before {
 	content: "# ";
 }
-#editor-container h2::before {
+#editor-container h2[data-symbol]::before {
 	content: "## ";
 }
-#editor-container h3::before {
+#editor-container h3[data-symbol]::before {
 	content: "### ";
 }
-#editor-container h4::before {
+#editor-container h4[data-symbol]::before {
 	content: "#### ";
 }
-#editor-container h5::before {
+#editor-container h5[data-symbol]::before {
 	content: "##### ";
 }
-#editor-container h6::before {
+#editor-container h6[data-symbol]::before {
 	content: "###### ";
 }
 

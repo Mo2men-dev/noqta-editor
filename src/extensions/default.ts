@@ -101,7 +101,12 @@ const createDefaultExtensions = (
 		extensions.push(HardBreak.configure(options.hardBreak));
 	}
 	if (options.heading !== false) {
-		extensions.push(Heading.configure(options.heading));
+		extensions.push(
+			Heading.configure({
+				...options.heading,
+				HTMLAttributes: SmartTyping.options.showSymbols ? { "data-symbol": "#" } : {},
+			})
+		);
 	}
 	if (options.history !== false) {
 		extensions.push(History.configure(options.history));
@@ -146,7 +151,14 @@ const createDefaultExtensions = (
 		extensions.push(TaskList.configure(options.taskList), TaskItem);
 	}
 	if (options.image !== false) {
-		extensions.push(Image.configure({ inline: true, allowBase64: true, ...options.image }));
+		extensions.push(
+			Image.configure({
+				inline: true,
+				allowBase64: true,
+				...options.image,
+				HTMLAttributes: { addedImg: "noqta-added-img", textAlign: "center" },
+			})
+		);
 	}
 	if (options.link !== false) {
 		extensions.push(
@@ -177,7 +189,7 @@ const createDefaultExtensions = (
 	if (options.textAlign !== false) {
 		extensions.push(
 			TextAlign.configure({
-				types: ["heading", "paragraph", "blockquote", "listItem", "taskItem"],
+				types: ["heading", "paragraph", "blockquote", "listItem", "taskItem", "image"],
 				defaultAlignment: "left",
 				...options.textAlign,
 			})
