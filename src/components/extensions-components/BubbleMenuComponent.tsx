@@ -1,26 +1,21 @@
 import { BubbleMenu } from "../extended-components/BubbleMenu";
 import { Editor } from "@tiptap/core";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "../../styles/components/BubbleMenuComponent.css";
 import FontFormatingTools from "../editor-tools/FontFormatingTools";
+import { MdFormatColorText } from "react-icons/md";
+import { PiHighlighterBold } from "react-icons/pi";
+import HorizontalCenter from "../layout-components/HorizontalCenter";
+import ColorInput from "../ui-elements/ColorInput";
+import useForceRerender from "../../hooks/ForceRerender";
 
 /**
  * A BubbleMenuComponent for Tiptap editor that provides text formatting options.
  */
 function BubbleMenuComponent({ editor }: { editor: Editor }) {
-	const [, setTick] = useState(0); // to force rerender on selection change
-
-	useEffect(() => {
-		if (!editor) return;
-		const onSel = () => setTick((t) => t + 1); // small state just to force rerender
-		editor.on("selectionUpdate", onSel);
-		editor.on("update", onSel);
-		return () => {
-			editor.off("selectionUpdate", onSel);
-			editor.off("update", onSel);
-		};
-	}, [editor]);
-
+	const [textColor, setTextColor] = useState("#ffffff");
+	const [highlightColor, setHighlightColor] = useState("#ffff00");
+	useForceRerender(editor);
 	return (
 		<BubbleMenu
 			editor={editor}
@@ -37,6 +32,27 @@ function BubbleMenuComponent({ editor }: { editor: Editor }) {
 				placement: "bottom",
 			}}>
 			<FontFormatingTools editor={editor} />
+			<HorizontalCenter>
+				<ColorInput
+					title="Highlight Color"
+					color={highlightColor}
+					icon={<PiHighlighterBold />}
+					onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+						setHighlightColor(e.target.value);
+						editor.chain().focus().toggleHighlight({ color: e.target.value }).run();
+					}}
+				/>
+				<ColorInput
+					title="Text Color"
+					value={textColor}
+					icon={<MdFormatColorText />}
+					color={textColor}
+					onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+						setTextColor(e.target.value);
+						editor.chain().focus().setColor(e.target.value).run();
+					}}
+				/>
+			</HorizontalCenter>
 		</BubbleMenu>
 	);
 }
