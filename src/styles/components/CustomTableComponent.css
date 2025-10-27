@@ -6,7 +6,7 @@
 
 	table {
 		border-collapse: collapse;
-		border-radius: 0.5rem;
+		border-radius: var(--noqta-theme-borderRadius, 0.5rem);
 		margin: 0 auto;
 		color: var(--noqta-theme-text-primary);
 	}

@@ -2,5 +2,5 @@
 	background-color: var(--noqta-theme-background-primary);
 	color: var(--noqta-theme-text-primary);
 	border-color: var(--noqta-theme-border-primary, transparent);
-	border-radius: 0.5rem;
+	border-radius: var(--noqta-theme-borderRadius, 0.5rem);
 }

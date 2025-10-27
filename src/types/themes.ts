@@ -12,4 +12,5 @@ export interface Theme {
 	text: ThemeSection;
 	border: ThemeSection;
 	shadow?: string;
+	borderRadius?: string;
 }
