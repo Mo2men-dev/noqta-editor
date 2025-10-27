@@ -16,6 +16,7 @@ export type ButtonProps = {
 	title: string;
 	children: string | React.ReactNode;
 	onClick: () => void;
+	className?: string;
 	style?: React.CSSProperties;
 	active?: boolean;
 	disabled?: boolean;
@@ -24,6 +25,8 @@ export type ButtonProps = {
 export type ColorInputProps = {
 	title?: string;
 	value?: string;
+	icon: React.ReactNode;
+	color: string;
 	onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 

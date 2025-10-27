@@ -18,4 +18,5 @@ export const darkTheme: Theme = {
 		active: "#555",
 	},
 	shadow: "#000",
+	borderRadius: "0.5rem",
 };

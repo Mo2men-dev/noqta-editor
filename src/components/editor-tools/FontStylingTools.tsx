@@ -1,7 +1,5 @@
-import { MdFormatColorText } from "react-icons/md";
 import { FONTS } from "../../constants/fonts";
 import Button from "../ui-elements/Button";
-import ColorInput from "../ui-elements/ColorInput";
 import DropDown from "../ui-elements/DropDown";
 import HorizontalCenter from "../layout-components/HorizontalCenter";
 import { useState } from "react";
@@ -12,7 +10,6 @@ import { FaAlignLeft, FaAlignCenter, FaAlignRight, FaAlignJustify } from "react-
  * Font styling tools for the editor.
  */
 function FontStylingTools({ editor }: { editor: Editor }) {
-	const [textColor, setTextColor] = useState("#ffffff");
 	const [font, setFont] = useState("Atkinson Hyperlegible");
 
 	return (
@@ -41,19 +38,6 @@ function FontStylingTools({ editor }: { editor: Editor }) {
 				active={editor.isActive({ textAlign: "justify" })}
 				onClick={() => editor.chain().focus().toggleTextAlign("justify").run()}
 			/>
-			<HorizontalCenter>
-				<ColorInput
-					title="Text Color"
-					value={textColor}
-					onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTextColor(e.target.value)}
-				/>
-				<Button
-					title="Text Color"
-					children={<MdFormatColorText />}
-					style={{ color: textColor }}
-					onClick={() => editor.chain().focus().setColor(textColor).run()}
-				/>
-			</HorizontalCenter>
 			<DropDown
 				activeOption={font}
 				options={Object.keys(FONTS)}

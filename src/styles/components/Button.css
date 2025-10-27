@@ -5,7 +5,7 @@
 	display: flex;
 	align-items: center;
 	padding: 0.5rem;
-	border-radius: 0.5rem;
+	border-radius: var(--noqta-theme-borderRadius, 0.5rem);
 	transition: all 0.2s ease-in-out;
 	border-width: 1px;
 	border-style: solid;

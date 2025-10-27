@@ -27,7 +27,7 @@
 	display: flex;
 	flex-direction: column;
 	gap: 0.25rem;
-	position: absolute;
+	position: fixed;
 	background: var(--noqta-theme-background-primary);
 	margin-top: 0.5rem;
 	padding: 0.5rem;
@@ -44,8 +44,9 @@
 .noqta-drop-menu-option {
 	padding: 0.5rem;
 	cursor: pointer;
-	border-radius: 0.25rem;
+	border-radius: var(--noqta-theme-borderRadius, 0.5rem);
 	transition: all 0.2s ease-in-out;
+	font-size: small;
 }
 
 .noqta-drop-menu-header:hover,
@@ -56,4 +57,10 @@
 .noqta-drop-menu-option.active {
 	background: var(--noqta-theme-background-active, --noqta-theme-background-primary);
 	color: var(--noqta-theme-text-secondary, --noqta-theme-text-primary);
+}
+
+@media screen and (max-width: 760px) {
+	.noqta-drop-menu-option {
+		font-size: smaller;
+	}
 }
