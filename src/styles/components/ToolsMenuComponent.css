@@ -17,9 +17,7 @@
 		1;
 }
 
-#tools-menu .font-formatting-tools .noqta-button,
-#tools-menu .content-formatting-tools .noqta-button,
-#tools-menu .font-styling-tools .noqta-button {
+#tools-menu .noqta-button {
 	border: none;
 }
 
@@ -29,4 +27,18 @@
 	background: var(--noqta-theme-border-primary, transparent);
 	margin: 0 6px;
 	border-radius: 10px;
+	flex-shrink: 0;
+}
+
+@media screen and (max-width: 760px) {
+	#tools-menu {
+		justify-content: flex-start;
+		overflow-x: scroll;
+		overflow-y: hidden;
+		scrollbar-width: none;
+	}
+
+	#tools-menu::-webkit-scrollbar {
+		display: none;
+	}
 }

@@ -45,7 +45,11 @@ function FontStylingTools({ editor }: { editor: Editor }) {
 				<ColorInput
 					title="Text Color"
 					value={textColor}
-					onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTextColor(e.target.value)}
+					onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+						console.log(e.target.value);
+						setTextColor(e.target.value);
+						editor.chain().focus().setColor(e.target.value).run();
+					}}
 				/>
 				<Button
 					title="Text Color"

@@ -14,7 +14,9 @@ export const ThemeProvider: React.FC<{ theme: Theme; children: ReactNode }> = ({
 	const cssVariables = getCssVariablesFromTheme(theme);
 	return (
 		<ThemeContext.Provider value={theme}>
-			<div style={{ ...cssVariables, height: "100%" }}>{children}</div>
+			<div id="theme-wrapper" style={{ ...cssVariables, height: "100%" }}>
+				{children}
+			</div>
 		</ThemeContext.Provider>
 	);
 };

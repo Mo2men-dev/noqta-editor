@@ -13,3 +13,7 @@
 	color: var(--noqta-theme-text-primary, #fff);
 	box-shadow: 0 2px 4px var(--noqta-theme-shadow, rgba(0, 0, 0, 0.2));
 }
+
+.noqta-bubble-menu .noqta-button {
+	border: none;
+}

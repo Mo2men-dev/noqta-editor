@@ -16,6 +16,7 @@ export type ButtonProps = {
 	title: string;
 	children: string | React.ReactNode;
 	onClick: () => void;
+	className?: string;
 	style?: React.CSSProperties;
 	active?: boolean;
 	disabled?: boolean;
