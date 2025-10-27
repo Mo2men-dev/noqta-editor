@@ -59,16 +59,14 @@ function FontFormatingTools({ editor }: { editor: Editor }) {
 				onClick={() => editor.chain().focus().toggleUnderline().run()}
 			/>
 			<HorizontalCenter>
-				<Button
-					title="Highlight"
-					children={<PiHighlighterBold />}
-					style={{ color: highlightColor }}
-					onClick={() => editor.chain().focus().toggleHighlight({ color: highlightColor }).run()}
-				/>
 				<ColorInput
 					title="Highlight Color"
-					value={highlightColor}
-					onChange={(e: React.ChangeEvent<HTMLInputElement>) => setHighlightColor(e.target.value)}
+					color={highlightColor}
+					icon={<PiHighlighterBold />}
+					onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+						setHighlightColor(e.target.value);
+						editor.chain().focus().toggleHighlight({ color: e.target.value }).run();
+					}}
 				/>
 			</HorizontalCenter>
 		</HorizontalCenter>

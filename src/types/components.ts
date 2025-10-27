@@ -25,6 +25,8 @@ export type ButtonProps = {
 export type ColorInputProps = {
 	title?: string;
 	value?: string;
+	icon: React.ReactNode;
+	color: string;
 	onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 

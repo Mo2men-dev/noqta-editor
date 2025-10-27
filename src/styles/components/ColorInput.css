@@ -1,11 +1,7 @@
 .noqta-color-input {
+	position: absolute;
+	padding: 0;
 	border: none;
-	outline-width: 2px;
-	outline-color: transparent;
-	outline-offset: 2px;
-	background: transparent;
-	border-radius: 9999px;
-	width: 100%;
 	cursor: pointer;
-	aspect-ratio: 1 / 1;
+	opacity: 0%;
 }

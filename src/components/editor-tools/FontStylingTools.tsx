@@ -41,23 +41,16 @@ function FontStylingTools({ editor }: { editor: Editor }) {
 				active={editor.isActive({ textAlign: "justify" })}
 				onClick={() => editor.chain().focus().toggleTextAlign("justify").run()}
 			/>
-			<HorizontalCenter>
-				<ColorInput
-					title="Text Color"
-					value={textColor}
-					onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-						console.log(e.target.value);
-						setTextColor(e.target.value);
-						editor.chain().focus().setColor(e.target.value).run();
-					}}
-				/>
-				<Button
-					title="Text Color"
-					children={<MdFormatColorText />}
-					style={{ color: textColor }}
-					onClick={() => editor.chain().focus().setColor(textColor).run()}
-				/>
-			</HorizontalCenter>
+			<ColorInput
+				title="Text Color"
+				value={textColor}
+				icon={<MdFormatColorText />}
+				color={textColor}
+				onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+					setTextColor(e.target.value);
+					editor.chain().focus().setColor(e.target.value).run();
+				}}
+			/>
 			<DropDown
 				activeOption={font}
 				options={Object.keys(FONTS)}
