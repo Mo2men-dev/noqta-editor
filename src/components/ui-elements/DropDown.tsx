@@ -5,6 +5,7 @@ import { FONTS } from "../../constants/fonts";
 import "../../styles/components/DropDown.css";
 import type { DropDownProps } from "../../types/components";
 import Button from "./Button";
+import useDropDownAutoClose from "../../hooks/DropDownAutoClose";
 
 function DropDown({ options, activeOption, onClickHandler }: DropDownProps) {
 	const anchorRef = useRef<HTMLDivElement>(null);
@@ -26,20 +27,7 @@ function DropDown({ options, activeOption, onClickHandler }: DropDownProps) {
 		}
 	}, [dropdownOpen, anchorRef]);
 
-	// Close on outside click or ESC
-	useEffect(() => {
-		if (!open) return;
-		const handleClick = (e: MouseEvent) =>
-			anchorRef.current && !anchorRef.current.contains(e.target as Node) && setDropdownOpen(false);
-		const handleEsc = (e: KeyboardEvent) => e.key === "Escape" && setDropdownOpen(false);
-		document.addEventListener("click", handleClick);
-		document.addEventListener("keydown", handleEsc);
-		return () => {
-			document.removeEventListener("click", handleClick);
-			document.removeEventListener("keydown", handleEsc);
-		};
-	}, [dropdownOpen]);
-
+	useDropDownAutoClose(dropdownOpen, setDropdownOpen, anchorRef);
 	return (
 		<menu className="noqta-drop-menu">
 			<div ref={anchorRef}>

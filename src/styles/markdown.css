@@ -143,9 +143,8 @@ ul[data-type="taskList"] > li > label {
 
 /* Marks */
 mark {
-	border-radius: 0.4rem;
 	box-decoration-break: clone;
-	padding: 0.1rem 0.3rem;
+	padding: 0 0.2rem;
 }
 
 /* Marks Symbols Wrappers */

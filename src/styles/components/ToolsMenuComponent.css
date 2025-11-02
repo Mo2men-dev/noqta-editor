@@ -21,15 +21,6 @@
 	border: none;
 }
 
-#tools-menu .separator {
-	width: 2px;
-	height: 20px;
-	background: var(--noqta-theme-border-primary, transparent);
-	margin: 0 6px;
-	border-radius: 10px;
-	flex-shrink: 0;
-}
-
 @media screen and (max-width: 760px) {
 	#tools-menu {
 		justify-content: flex-start;

@@ -44,6 +44,7 @@
 .noqta-drop-menu-option {
 	padding: 0.5rem;
 	cursor: pointer;
+	color: var(--noqta-theme-text-primary);
 	border-radius: var(--noqta-theme-borderRadius, 0.5rem);
 	transition: all 0.2s ease-in-out;
 	font-size: small;

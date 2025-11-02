@@ -11,6 +11,10 @@
 	height: 100%;
 }
 
+.ProseMirror::selection {
+	background: rgba(50, 50, 130, 0.5);
+}
+
 .ProseMirror > * {
 	box-sizing: border-box;
 	margin: 0;
@@ -53,4 +57,13 @@
 	width: 50%;
 	aspect-ratio: 2 / 1;
 	border-radius: 1rem;
+}
+
+#separator {
+	width: 2px;
+	height: 20px;
+	background: var(--noqta-theme-border-primary, transparent);
+	margin: 0 6px;
+	border-radius: 10px;
+	flex-shrink: 0;
 }
