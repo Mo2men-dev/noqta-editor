@@ -14,11 +14,11 @@ function ToolsMenuComponent({ editor }: { editor: Editor }) {
 	return (
 		<div id="tools-menu">
 			<FontFormatingTools editor={editor} />
-			<span className="separator"></span>
+			<span id="separator"></span>
 			<ContentFormatingTools editor={editor} />
-			<span className="separator"></span>
+			<span id="separator"></span>
 			<FontStylingTools editor={editor} />
-			<span className="separator"></span>
+			<span id="separator"></span>
 			<Button
 				title="Add Image"
 				onClick={() => {

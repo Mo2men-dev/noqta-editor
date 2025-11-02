@@ -14,7 +14,7 @@ export interface NoqtaEditorProps {
 
 export type ButtonProps = {
 	title: string;
-	children: string | React.ReactNode;
+	children?: string | React.ReactNode;
 	onClick: () => void;
 	className?: string;
 	style?: React.CSSProperties;
@@ -26,8 +26,13 @@ export type ColorInputProps = {
 	title?: string;
 	value?: string;
 	icon: React.ReactNode;
-	color: string;
-	onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	options: {
+		color: string;
+		border: string;
+		title: string;
+	}[];
+	handleClick: (color: string) => void;
+	handleRemove?: () => void;
 };
 
 export type CustomTableComponentProps = {

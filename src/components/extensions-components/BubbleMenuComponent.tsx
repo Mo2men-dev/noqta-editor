@@ -1,6 +1,5 @@
 import { BubbleMenu } from "../extended-components/BubbleMenu";
 import { Editor } from "@tiptap/core";
-import { useState } from "react";
 import "../../styles/components/BubbleMenuComponent.css";
 import FontFormatingTools from "../editor-tools/FontFormatingTools";
 import { MdFormatColorText } from "react-icons/md";
@@ -8,13 +7,20 @@ import { PiHighlighterBold } from "react-icons/pi";
 import HorizontalCenter from "../layout-components/HorizontalCenter";
 import ColorInput from "../ui-elements/ColorInput";
 import useForceRerender from "../../hooks/ForceRerender";
+import { HIGHLIGHT_COLORS, TEXT_COLORS } from "../../constants/colorOptions";
 
 /**
  * A BubbleMenuComponent for Tiptap editor that provides text formatting options.
  */
 function BubbleMenuComponent({ editor }: { editor: Editor }) {
-	const [textColor, setTextColor] = useState("#ffffff");
-	const [highlightColor, setHighlightColor] = useState("#ffff00");
+	const highlight = (color: string) => {
+		editor.chain().focus().toggleHighlight({ color }).run();
+	};
+
+	const textColor = (color: string) => {
+		editor.chain().focus().setColor(color).run();
+	};
+
 	useForceRerender(editor);
 	return (
 		<BubbleMenu
@@ -35,22 +41,16 @@ function BubbleMenuComponent({ editor }: { editor: Editor }) {
 			<HorizontalCenter>
 				<ColorInput
 					title="Highlight Color"
-					color={highlightColor}
 					icon={<PiHighlighterBold />}
-					onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-						setHighlightColor(e.target.value);
-						editor.chain().focus().toggleHighlight({ color: e.target.value }).run();
-					}}
+					options={HIGHLIGHT_COLORS}
+					handleClick={highlight}
+					handleRemove={() => editor.chain().focus().unsetHighlight().run()}
 				/>
 				<ColorInput
 					title="Text Color"
-					value={textColor}
 					icon={<MdFormatColorText />}
-					color={textColor}
-					onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-						setTextColor(e.target.value);
-						editor.chain().focus().setColor(e.target.value).run();
-					}}
+					options={TEXT_COLORS}
+					handleClick={textColor}
 				/>
 			</HorizontalCenter>
 		</BubbleMenu>
