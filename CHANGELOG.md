@@ -1,3 +1,9 @@
+## [1.5.0](https://github.com/Mo2men-dev/noqta-editor/compare/v1.4.0...v1.5.0) (2025-11-02)
+
+### Features
+
+- **ui-components:** Color picker to have preset colors ([0f706dd](https://github.com/Mo2men-dev/noqta-editor/commit/0f706ddd25fdc3ca6173f5c69c22f313e71171f3))
+
 ## [1.4.0](https://github.com/Mo2men-dev/noqta-editor/compare/v1.3.0...v1.4.0) (2025-09-29)
 
 ### Features
