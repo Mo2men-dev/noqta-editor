@@ -1,7 +1,4 @@
 #tools-menu {
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	width: 100%;
 	z-index: 1000;
 	padding: 0.2rem;
@@ -15,6 +12,20 @@
 			var(--noqta-theme-border-secondary, transparent)
 		)
 		1;
+}
+
+#tools-menu .tools-wrapper {
+	display: flex;
+	gap: 0.5rem;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+}
+
+#tools-menu .tools {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 #tools-menu .noqta-button {

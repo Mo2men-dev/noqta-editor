@@ -2,6 +2,18 @@ import type { Editor, Extension } from "@tiptap/core";
 import type { DefaultExtensions } from "./extensions";
 import type { Theme } from "./themes";
 import { Node } from "@tiptap/pm/model";
+import type { useEditor } from "@tiptap/react";
+
+// A user added tool is represented as a tuple containing:
+// [tool name, tool icon or string (ReactNode), tool action (function)]
+export type UserAddedTool = [string, React.ReactNode, () => void];
+
+export interface NoqtaEditorInstance extends ReturnType<typeof useEditor> {
+	// Define any methods or properties you want to expose from the editor instance
+	userAddedTools?: UserAddedTool[];
+	getMarkdown: () => string;
+	exportPDF: (filename: string) => void;
+}
 
 export interface NoqtaEditorProps {
 	initialContent?: string;
@@ -10,6 +22,7 @@ export interface NoqtaEditorProps {
 	theme?: Theme;
 	style?: React.CSSProperties;
 	editable?: boolean;
+	userAddedTools?: UserAddedTool[];
 }
 
 export type ButtonProps = {
