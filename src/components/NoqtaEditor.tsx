@@ -3,7 +3,6 @@ import { EditorContent, useEditor } from "@tiptap/react";
 
 import { darkTheme } from "../themes/dark";
 import { ThemeProvider } from "../context/ThemeContext";
-import { styleObjectToString } from "../utils/styling";
 import type { NoqtaEditorProps } from "../types/components";
 
 import BubbleMenuComponent from "./extensions-components/BubbleMenuComponent";
@@ -39,7 +38,6 @@ function NoqtaEditor(props: NoqtaEditorProps) {
 		editorProps: {
 			attributes: {
 				id: "noqta-editor",
-				style: styleObjectToString(props.style || {}),
 				role: "textbox",
 			},
 		},
@@ -49,7 +47,7 @@ function NoqtaEditor(props: NoqtaEditorProps) {
 		<ThemeProvider theme={theme}>
 			{editor && <BubbleMenuComponent editor={editor} />}
 			{editor && (
-				<EditorContent editor={editor} id="editor-container">
+				<EditorContent editor={editor} id="editor-container" style={props.style || {}}>
 					{editor && <ToolsMenuComponent editor={editor} />}
 				</EditorContent>
 			)}
