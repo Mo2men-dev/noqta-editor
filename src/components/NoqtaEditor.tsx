@@ -11,10 +11,11 @@ import createDefaultExtensions from "../extensions/default";
 import "../styles/index.css";
 import "../styles/syntax.css";
 import "../styles/markdown.css";
+import "../styles/pdf-export.css";
 import "../styles/components/NoqtaEditor.css";
 
 import ToolsMenuComponent from "./ToolsMenuComponent";
-import { downloadMarkdownUtil, getMarkdownUtil } from "../utils/tools";
+import { exportPDFUtil, getMarkdownUtil } from "../utils/tools";
 
 let editor: NoqtaEditorInstance | null = null;
 
@@ -51,7 +52,7 @@ function NoqtaEditor(props: NoqtaEditorProps) {
 		// store user added tools on the editor instance without changing the Editor type
 		editor.userAddedTools = props.userAddedTools ?? [];
 		editor.getMarkdown = getMarkdownUtil;
-		editor.downloadMarkdown = downloadMarkdownUtil;
+		editor.exportPDF = exportPDFUtil;
 	}
 
 	return (

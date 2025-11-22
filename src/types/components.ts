@@ -12,7 +12,7 @@ export interface NoqtaEditorInstance extends ReturnType<typeof useEditor> {
 	// Define any methods or properties you want to expose from the editor instance
 	userAddedTools?: UserAddedTool[];
 	getMarkdown: () => string;
-	downloadMarkdown: (filename: string) => void;
+	exportPDF: (filename: string) => void;
 }
 
 export interface NoqtaEditorProps {
