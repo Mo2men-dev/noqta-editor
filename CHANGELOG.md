@@ -1,3 +1,14 @@
+## [1.6.0](https://github.com/Mo2men-dev/noqta-editor/compare/v1.5.0...v1.6.0) (2025-11-22)
+
+### Features
+
+- **editor:** add PDF export functionality and update dependencies ([3a878dc](https://github.com/Mo2men-dev/noqta-editor/commit/3a878dc1f9eb3d52ad87ef2dc30acd116f32fec5))
+- **editor:** Enhance NoqtaEditor with user-added tools and markdown utilities ([413c30c](https://github.com/Mo2men-dev/noqta-editor/commit/413c30c606cb48a4389332e0367a3b9a440eb9b8))
+
+### Bug Fixes
+
+- **ui-components:** Remove unused style utility and apply styles directly to EditorContent ([66ed395](https://github.com/Mo2men-dev/noqta-editor/commit/66ed395982d5c7d991578254e94805d237a92a8e))
+
 ## [1.5.0](https://github.com/Mo2men-dev/noqta-editor/compare/v1.4.0...v1.5.0) (2025-11-02)
 
 ### Features
